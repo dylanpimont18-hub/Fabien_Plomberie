@@ -2,7 +2,7 @@ name: Déploiement GitHub Pages
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, claude/site-fremont-plomberie]
   workflow_dispatch:
     inputs:
       site_mode:
@@ -38,6 +38,9 @@ jobs:
       - name: Configurer GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # active Pages (source : GitHub Actions) si ce n'est pas encore fait
+          enablement: true
 
       - name: Construire le site
         env:
