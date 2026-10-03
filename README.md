@@ -78,8 +78,8 @@ src/
     layouts/        base, page, service, zone, article
     partials/       header, footer, mobile-bar, demo-banner, jsonld, faq, form-devis, map, logo, icons, cta…
   assets/
-    css/            tokens.css, base.css, components.css, pages.css (concaténés, minifiés, inlinés)
-    js/main.js      header, menu, révélations, FAQ, slider avant/après, formulaire 3 écrans, mesure
+    css/            tokens.css, base.css, components.css, pages.css, motion3d.css (concaténés, minifiés, inlinés)
+    js/main.js      header, menu, révélations, animations 3D, FAQ, slider avant/après, formulaire 3 écrans, mesure
     fonts/          Fraunces et Inter (woff2, sous-ensemble latin, axes restreints)
     img/            image OG, icônes, logo original (placeholder)
   index.njk         accueil
@@ -97,7 +97,8 @@ scripts/            audit Lighthouse
 
 - **CSS inliné** : la feuille complète (≈ 40 ko minifiés, ≈ 9 ko compressés) est inlinée dans chaque page : aucune requête CSS bloquante, pas de flash de contenu non stylé.
 - **Polices auto-hébergées** : Fraunces (variable, axes `opsz` 9–144 et `wght` 300–600, axe `SOFT` figé à 30) et Inter (variable, `wght` 400–700, `opsz` figé), sous-ensemble latin, ≈ 62 ko + 50 ko, préchargées, avec polices de repli calibrées (`size-adjust`, `ascent-override`) pour limiter le décalage de mise en page. Les fichiers sont produits avec `pyftsubset` et `fonttools varLib.instancer`.
-- **JS différé et minimal** (≈ 6 ko) : aucune dépendance, chaque module se désactive si son élément est absent ; le site reste entièrement utilisable sans JavaScript (formulaire en une colonne, accordéons natifs).
+- **Animations 3D sans bibliothèque** (`motion3d.css`) : globe de cuivre en 3D dans le héros qui suit la souris, révélations en profondeur au défilement, cartes qui s'inclinent au survol avec reflet, numéros d'étapes et étoiles qui pivotent, carte de zone qui se redresse, carrousel avant/après en cylindre. Uniquement des transformations CSS accélérées par le GPU ; tout est figé avec `prefers-reduced-motion` et à l'impression, et l'inclinaison au pointeur est réservée aux souris.
+- **JS différé et minimal** (≈ 9 ko) : aucune dépendance, chaque module se désactive si son élément est absent ; le site reste entièrement utilisable sans JavaScript (formulaire en une colonne, accordéons natifs).
 - **Accessibilité** : un seul `h1` par page, lien d'évitement, focus visible, menu mobile avec piège de focus et Échap, slider avant/après pilotable au clavier (`input type="range"`), `prefers-reduced-motion` respecté, contrastes AA vérifiés (voir `DESIGN.md`).
 - **SEO** : titres et descriptions uniques, canonical, Open Graph et Twitter Cards, JSON-LD `Plumber` + `WebSite` sur toutes les pages, `Service`, `FAQPage`, `BreadcrumbList`, `Article` selon la page, sitemap et robots générés, pages de zones au contenu réellement distinct.
 - **Aucun cookie** : pas de bandeau de consentement ; emplacement prévu pour Plausible ou Umami (sans cookie) avec suivi des clics `tel:`, des envois de formulaire et des clics WhatsApp.

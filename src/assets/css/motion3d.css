@@ -1,0 +1,186 @@
+/* ==========================================================================
+   ANIMATIONS 3D — transformations CSS uniquement (aucune bibliothèque),
+   pilotées par main.js. Tout est neutralisé avec prefers-reduced-motion
+   et à l'impression.
+   ========================================================================== */
+
+/* ---------- Révélations au scroll : bascule en profondeur ---------- */
+.js .reveal {
+  transform: perspective(1100px) translate3d(0, 28px, -80px) rotateX(14deg);
+  transform-origin: 50% 100%;
+  transition: opacity var(--d-slow) var(--e-out), transform var(--d-reveal) var(--e-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+.js .reveal.is-visible { transform: none; }
+
+/* Titres ligne à ligne : chaque ligne pivote comme un volet */
+.js .reveal-lines .line > span {
+  transform: perspective(700px) translateY(105%) rotateX(-80deg);
+  transform-origin: 50% 0;
+  transition: transform var(--d-reveal) var(--e-out), opacity var(--d-reveal) var(--e-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+  opacity: 0;
+}
+.js .reveal-lines.is-visible .line > span { transform: none; opacity: 1; }
+
+/* Groupes (badges de réassurance) : rotation des éléments un à un */
+.js [data-reveal-group] > * {
+  opacity: 0;
+  transform: perspective(600px) rotateX(-75deg) translateY(12px);
+  transform-origin: 50% 0;
+  transition: opacity var(--d-slow) var(--e-out), transform var(--d-reveal) var(--e-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js [data-reveal-group].is-visible > * { opacity: 1; transform: none; }
+
+/* ---------- Inclinaison 3D au survol (cartes, portrait) ---------- */
+[data-tilt] { --tilt-x: 0deg; --tilt-y: 0deg; --glare-x: 50%; --glare-y: 50%; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .js [data-tilt].is-settled {
+    transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateZ(0);
+    transition: transform 500ms var(--e-out), background-color var(--d-base) var(--e-std), box-shadow var(--d-base) var(--e-std);
+    transition-delay: 0s;
+  }
+  .js [data-tilt].is-tilting {
+    transition: transform 120ms linear, background-color var(--d-base) var(--e-std), box-shadow var(--d-base) var(--e-std);
+    box-shadow: 0 24px 48px -20px rgb(14 26 43 / .35);
+  }
+  /* Reflet lumineux qui suit le pointeur */
+  .card-service[data-tilt]::after, .card[data-tilt]::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(circle at var(--glare-x) var(--glare-y), rgb(255 255 255 / .35), transparent 55%);
+    opacity: 0; transition: opacity var(--d-base) var(--e-std); mix-blend-mode: soft-light;
+  }
+  .card-service[data-tilt].is-tilting::after, .card[data-tilt].is-tilting::after { opacity: 1; }
+  .card[data-tilt] { position: relative; overflow: hidden; }
+  /* Portrait : la légende flotte au-dessus de la photo */
+  .portrait__visual[data-tilt] { transform-style: preserve-3d; }
+  .portrait__visual[data-tilt] .portrait__caption { transform: translateZ(48px); transition: transform 500ms var(--e-out); }
+}
+
+/* ---------- Méthode : les numéros font un tour sur eux-mêmes ---------- */
+.js .steps__num { transform: perspective(500px) rotateY(-200deg) scale(.7); transition: transform 900ms var(--e-out); transition-delay: calc(var(--i, 0) * 120ms + 150ms); backface-visibility: visible; }
+.js .steps__item.is-visible .steps__num { transform: none; }
+
+/* ---------- Avis : étoiles qui pivotent une à une ---------- */
+.js .review .review__stars .icon { transform: perspective(300px) rotateY(-180deg) scale(.4); opacity: 0; transition: transform 700ms var(--e-out), opacity 400ms var(--e-out); }
+.js .review.is-visible .review__stars .icon { transform: none; opacity: 1; }
+.js .review__stars .icon:nth-child(2) { transition-delay: 90ms; }
+.js .review__stars .icon:nth-child(3) { transition-delay: 180ms; }
+.js .review__stars .icon:nth-child(4) { transition-delay: 270ms; }
+.js .review__stars .icon:nth-child(5) { transition-delay: 360ms; }
+
+/* ---------- Carte : elle se redresse, puis les épingles tombent ---------- */
+.js [data-map3d] svg { transform: perspective(1200px) rotateX(58deg) scale(.88); transform-origin: 50% 80%; opacity: .3; transition: transform 1100ms var(--e-out), opacity 700ms var(--e-out); }
+.js [data-map3d].is-visible svg { transform: none; opacity: 1; }
+.js [data-map3d] .map__city { transform-box: fill-box; transform: translateY(-40px); opacity: 0; transition: transform 700ms cubic-bezier(.34, 1.56, .64, 1), opacity 300ms var(--e-out); transition-delay: calc(var(--i, 0) * 110ms + 700ms); }
+.js [data-map3d].is-visible .map__city { transform: none; opacity: 1; }
+
+/* ---------- Avant / après : les diapositives pivotent en entrant (effet cylindre) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .ba-carousel__slide {
+    transform: perspective(1400px) rotateY(var(--ba-rot, 0deg)) scale(var(--ba-scale, 1));
+    transform-origin: var(--ba-origin, 50%) 50%;
+    opacity: var(--ba-op, 1);
+  }
+}
+
+/* ---------- Héros : globe de cuivre en 3D ---------- */
+.hero__3d {
+  position: absolute; z-index: 0; pointer-events: none;
+  /* Mobile : élément d'arrière-plan, discret derrière le texte */
+  --size: 15rem;
+  top: calc(var(--header-h) + var(--demo-h)); right: -3.5rem;
+  opacity: .4;
+}
+/* Mobile : le libellé du visuel passe à gauche pour laisser la place au globe */
+@media (max-width: 63.99em) {
+  .home .hero__visual .ph__label { right: auto; left: var(--gutter); text-align: left; }
+}
+@media (min-width: 48em) { .hero__3d { --size: 20rem; right: var(--gutter); opacity: .75; } }
+@media (min-width: 64em) {
+  .hero__3d {
+    --size: min(27rem, 32vw);
+    top: 50%; translate: 0 -46%; opacity: 1;
+    right: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--sp-6)));
+  }
+}
+.orb { width: var(--size); height: var(--size); perspective: 1400px; }
+.orb__tilt {
+  position: relative; width: 100%; height: 100%; transform-style: preserve-3d;
+  transform: rotateX(calc(-14deg + var(--orb-rx, 0deg))) rotateY(var(--orb-ry, 0deg));
+  transition: transform 900ms var(--e-out);
+}
+.orb__spin { position: absolute; inset: 0; transform-style: preserve-3d; animation: orb-spin 36s linear infinite; }
+.orb__ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px solid rgb(217 160 102 / .6);
+  transform: rotateY(calc(var(--k) * 30deg));
+}
+.orb__lat {
+  position: absolute; left: 50%; top: 50%; border-radius: 50%;
+  width: calc(var(--size) * var(--c)); height: calc(var(--size) * var(--c));
+  margin: calc(var(--size) * var(--c) / -2) 0 0 calc(var(--size) * var(--c) / -2);
+  border: 1px solid rgb(217 160 102 / .35);
+  transform: translateY(calc(var(--size) / 2 * var(--s))) rotateX(90deg);
+}
+/* Équateur en « tube de cuivre » */
+.orb__lat--eq { border: 3px solid var(--c-cuivre); box-shadow: 0 0 24px rgb(217 160 102 / .35), inset 0 0 12px rgb(217 160 102 / .3); }
+.orb__orbit {
+  position: absolute; left: 50%; top: 50%; width: calc(var(--size) * 1.18); height: calc(var(--size) * 1.18);
+  margin: calc(var(--size) * -0.59) 0 0 calc(var(--size) * -0.59); border-radius: 50%;
+  border: 1px dashed rgb(246 243 238 / .18); transform-style: preserve-3d;
+}
+.orb__orbit--a { transform: rotateZ(-24deg) rotateX(72deg); }
+.orb__orbit--b { transform: rotateZ(32deg) rotateX(68deg) scale(.86); }
+.orb__orbit::before { content: ""; position: absolute; inset: 0; border-radius: 50%; }
+.orb__sat {
+  position: absolute; inset: 0; border-radius: 50%; transform-style: preserve-3d;
+  animation: orb-spin-z 9s linear infinite;
+}
+.orb__orbit--b .orb__sat { animation-duration: 14s; animation-direction: reverse; }
+.orb__sat::after {
+  content: ""; position: absolute; top: -6px; left: 50%; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff, var(--c-cuivre-clair) 45%, var(--c-cuivre-encre));
+  box-shadow: 0 0 16px 4px rgb(217 160 102 / .55);
+  transform: rotateX(-70deg);
+}
+.orb__drop {
+  position: absolute; left: 50%; top: 50%; width: calc(var(--size) * .2); height: auto;
+  translate: -50% -58%;
+  animation: orb-float 5s var(--e-in-out) infinite alternate;
+}
+/* Halo derrière la goutte (dégradé plutôt qu'un filtre, qui crée un cadre en 3D) */
+.orb__glow {
+  position: absolute; left: 50%; top: 50%; width: calc(var(--size) * .55); height: calc(var(--size) * .55);
+  translate: -50% -50%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(217 160 102 / .45), rgb(217 160 102 / .12) 55%, transparent);
+  animation: orb-pulse 5s var(--e-in-out) infinite alternate;
+}
+@keyframes orb-pulse { from { transform: scale(.9); opacity: .8; } to { transform: scale(1.1); opacity: 1; } }
+@keyframes orb-spin { to { transform: rotateY(360deg); } }
+@keyframes orb-spin-z { to { transform: rotateZ(360deg); } }
+@keyframes orb-float {
+  from { transform: translateZ(40px) translateY(-6px) rotateY(-18deg); }
+  to { transform: translateZ(40px) translateY(6px) rotateY(18deg); }
+}
+/* Entrée du globe */
+.js .hero__3d .orb { opacity: 0; transform: scale(.6) rotateX(40deg); transition: opacity 1200ms var(--e-out), transform 1600ms var(--e-out); }
+.js .hero__3d.is-visible .orb { opacity: 1; transform: none; }
+/* Le globe s'éloigne au défilement (navigateurs compatibles) */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__3d { animation: orb-scroll linear both; animation-timeline: scroll(root); animation-range: 0 90vh; }
+  }
+}
+@keyframes orb-scroll { to { transform: translateY(18vh) scale(.75); opacity: 0; } }
+
+/* ---------- Mouvement réduit : tout est figé dans son état final ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal, .js .reveal-lines .line > span, .js [data-reveal-group] > *,
+  .js .steps__num, .js .review .review__stars .icon,
+  .js [data-map3d] svg, .js [data-map3d] .map__city, .js .hero__3d .orb {
+    transform: none; opacity: 1; transition: none;
+  }
+  .orb__spin, .orb__sat, .orb__drop, .orb__glow { animation: none; }
+}

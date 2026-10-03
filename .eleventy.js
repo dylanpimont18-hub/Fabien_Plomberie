@@ -11,7 +11,7 @@ const LINK_MODE = process.env.LINK_MODE || "absolute"; // "relative" pour une pr
 const IS_PROD_BUILD = process.env.ELEVENTY_RUN_MODE !== "serve";
 
 /* ---------- CSS : concaténation, minification, inline dans <head> ---------- */
-const CSS_ORDER = ["tokens.css", "base.css", "components.css", "pages.css"];
+const CSS_ORDER = ["tokens.css", "base.css", "components.css", "pages.css", "motion3d.css"];
 function buildCss() {
   const dir = path.join(__dirname, "src/assets/css");
   const raw = CSS_ORDER.map((f) => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");

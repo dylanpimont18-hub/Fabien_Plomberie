@@ -8,9 +8,32 @@ bodyClass: "home"
 {%- set faqItems = faq -%}
 
 {#- 2. HERO -#}
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero on-dark" aria-labelledby="hero-title">
   <div class="hero__visual" aria-hidden="true">
     <div class="ph trame"><span class="ph__label">Photo chantier à fournir · visuel principal</span></div>
+  </div>
+  <div class="hero__3d" aria-hidden="true">
+    <div class="orb" data-orb>
+      <div class="orb__tilt">
+        <div class="orb__spin">
+          <span class="orb__ring" style="--k:0"></span>
+          <span class="orb__ring" style="--k:1"></span>
+          <span class="orb__ring" style="--k:2"></span>
+          <span class="orb__ring" style="--k:3"></span>
+          <span class="orb__ring" style="--k:4"></span>
+          <span class="orb__ring" style="--k:5"></span>
+          <span class="orb__lat" style="--s:-0.866;--c:0.500"></span>
+          <span class="orb__lat" style="--s:-0.500;--c:0.866"></span>
+          <span class="orb__lat orb__lat--eq" style="--s:0.000;--c:1.000"></span>
+          <span class="orb__lat" style="--s:0.500;--c:0.866"></span>
+          <span class="orb__lat" style="--s:0.866;--c:0.500"></span>
+        </div>
+        <div class="orb__orbit orb__orbit--a"><span class="orb__sat"></span></div>
+        <div class="orb__orbit orb__orbit--b"><span class="orb__sat"></span></div>
+        <span class="orb__glow"></span>
+        <svg class="orb__drop" viewBox="0 0 64 88"><defs><linearGradient id="orb-drop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6F3EE"/><stop offset=".55" stop-color="#D9A066"/><stop offset="1" stop-color="#8A5422"/></linearGradient></defs><path d="M32 2C32 2 4 38 4 58a28 28 0 0 0 56 0C60 38 32 2 32 2Z" fill="url(#orb-drop)"/><path d="M18 56a14 14 0 0 0 10 16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/></svg>
+      </div>
+    </div>
   </div>
   <div class="container hero__content">
     <p class="eyebrow reveal">Artisan plombier · Vignoux-sur-Barangeon</p>
@@ -33,9 +56,9 @@ bodyClass: "home"
 {#- 3. RÉASSURANCE -#}
 <section class="section--tight" aria-label="Pourquoi me faire confiance">
   <div class="container">
-    <ul class="reassurance" style="list-style:none;padding:0;margin:0">
+    <ul class="reassurance" data-reveal-group style="list-style:none;padding:0;margin:0">
       {%- for r in nav.reassurance %}
-      <li class="badge {{ 'badge--todo' if r.todo }} reveal" style="--i:{{ loop.index0 }}">
+      <li class="badge {{ 'badge--todo' if r.todo }}" style="--i:{{ loop.index0 }}">
         <svg class="icon" aria-hidden="true"><use href="#i-{{ r.icon }}"/></svg>
         <span><span class="badge__label">{{ r.label }}</span><span class="badge__sub">{{ r.sub }}</span></span>
       </li>
@@ -142,7 +165,7 @@ bodyClass: "home"
 {#- 8. PORTRAIT -#}
 <section class="section" aria-labelledby="portrait-title">
   <div class="container portrait">
-    <div class="portrait__visual reveal">
+    <div class="portrait__visual reveal" data-tilt>
       <div class="ph ph--4-5" role="img" aria-label="Portrait de Fabien Frémont à fournir"><span class="ph__label">Portrait à fournir</span></div>
       <div class="portrait__caption"><strong>Fabien Frémont</strong>Artisan plombier depuis 2024, plombier depuis bien plus longtemps</div>
     </div>
@@ -185,12 +208,12 @@ bodyClass: "home"
 {#- 10. CARTE -#}
 <section class="section" aria-labelledby="zone-title">
   <div class="container grid grid--12" style="align-items:center">
-    <div class="reveal" style="grid-column: span 5">
+    <div class="reveal col-5">
       <p class="eyebrow">Zone d'intervention</p>
       <h2 id="zone-title">Autour de Vierzon, jusqu'à Bourges</h2>
       <p class="muted" style="margin-top:var(--sp-4)">Je suis basé à Vignoux-sur-Barangeon et j'interviens dans un rayon d'environ 50 km : vallée de l'Yèvre, Sologne du Cher, agglomération de Bourges. Cliquez sur une commune pour découvrir comment j'y travaille.</p>
     </div>
-    <div class="reveal" style="grid-column: span 7; --i:1">
+    <div class="reveal col-7" style="--i:1">
       {% include "partials/map.njk" %}
     </div>
   </div>
@@ -199,12 +222,12 @@ bodyClass: "home"
 {#- 11. FAQ -#}
 <section class="section section--ivoire-2" aria-labelledby="faq-title">
   <div class="container grid grid--12">
-    <div class="reveal" style="grid-column: span 4">
+    <div class="reveal col-4">
       <p class="eyebrow">Questions fréquentes</p>
       <h2 id="faq-title">Ce qu'on me demande souvent</h2>
       <p class="muted" style="margin-top:var(--sp-4)">Une autre question ? <a href="{{ site.phoneHref }}" data-track="call" data-track-where="faq">Appelez-moi</a>, c'est plus simple.</p>
     </div>
-    <div class="reveal" style="grid-column: span 8; --i:1">
+    <div class="reveal col-8" style="--i:1">
       {% set faqName = "faq-accueil" %}{% include "partials/faq.njk" %}
     </div>
   </div>

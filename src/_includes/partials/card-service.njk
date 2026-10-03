@@ -1,5 +1,5 @@
 {#- Attend : s (service), featured (bool), index (int) -#}
-<a class="card-service reveal {{ 'card-service--featured' if featured }}" href="{{ ('/services/' + s.slug + '/') | url }}" data-area="{{ s.slug }}" style="--i:{{ index or 0 }}">
+<a data-tilt class="card-service reveal {{ 'card-service--featured' if featured }}" href="{{ ('/services/' + s.slug + '/') | url }}" data-area="{{ s.slug }}" style="--i:{{ index or 0 }}">
   {%- if featured %}
   <div class="card-service__bg" aria-hidden="true"><div class="ph trame"></div></div>
   <span class="card-service__note">{{ s.featuredNote }}</span>

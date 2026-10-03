@@ -32,7 +32,7 @@ article: true
       {%- endif %}
       <nav class="article-nav" aria-label="Autres conseils">
         {%- for a in collections.conseils %}{% if a.url != page.url %}
-        <a class="card" href="{{ a.url | url }}">
+        <a class="card" data-tilt href="{{ a.url | url }}">
           <span class="card__meta">{{ a.data.category }}</span>
           <h3>{{ a.data.title }}</h3>
           <span class="card__more">Lire <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>

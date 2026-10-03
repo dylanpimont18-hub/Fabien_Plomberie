@@ -25,11 +25,16 @@
   /* ---------- Bandeau démo ---------- */
   const demo = $("#demo-banner");
   if (demo) {
+    // Hauteur réelle du bandeau (il passe sur deux lignes sur mobile) pour décaler l'en-tête
+    const syncDemo = () => document.body.style.setProperty("--demo-h", demo.classList.contains("is-hidden") ? "0px" : demo.offsetHeight + "px");
     try { if (sessionStorage.getItem("demo-hidden") === "1") demo.classList.add("is-hidden"); } catch (_) {}
     $("[data-demo-close]", demo)?.addEventListener("click", () => {
       demo.classList.add("is-hidden");
+      syncDemo();
       try { sessionStorage.setItem("demo-hidden", "1"); } catch (_) {}
     });
+    if ("ResizeObserver" in window) new ResizeObserver(syncDemo).observe(demo);
+    syncDemo();
   }
 
   /* ---------- Header : opaque au scroll (sentinelle, pas d'écouteur scroll) ---------- */
@@ -95,15 +100,68 @@
   }
 
   /* ---------- Révélations au scroll (une seule fois) ---------- */
-  const revealEls = $$(".reveal, .reveal-lines, [data-steps]");
+  // Une carte inclinable ne réagit au pointeur qu'une fois son entrée terminée
+  const settle = (el) => { if (el.hasAttribute("data-tilt")) setTimeout(() => el.classList.add("is-settled"), 1100); };
+  $$("[data-tilt]:not(.reveal)").forEach((el) => el.classList.add("is-settled"));
+  const revealEls = $$(".reveal, .reveal-lines, [data-steps], [data-reveal-group], [data-map3d], .hero__3d");
   if (revealEls.length) {
-    if (reduced || !("IntersectionObserver" in window)) revealEls.forEach((el) => el.classList.add("is-visible"));
+    const showEl = (el) => { el.classList.add("is-visible"); settle(el); };
+    if (reduced || !("IntersectionObserver" in window)) revealEls.forEach(showEl);
     else {
       const io = new IntersectionObserver((entries) => {
-        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); } });
+        entries.forEach((en) => { if (en.isIntersecting) { showEl(en.target); io.unobserve(en.target); } });
       }, { threshold: 0.15, rootMargin: "0px 0px -5% 0px" });
       revealEls.forEach((el) => io.observe(el));
     }
+  }
+
+  /* ---------- Inclinaison 3D au pointeur (souris uniquement) ---------- */
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (finePointer && !reduced) {
+    $$("[data-tilt]").forEach((el) => {
+      const max = el.classList.contains("card-service--featured") || el.classList.contains("portrait__visual") ? 6 : 9;
+      let frame = 0;
+      el.addEventListener("pointermove", (e) => {
+        if (!el.classList.contains("is-settled")) return;
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          const r = el.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          el.classList.add("is-tilting");
+          el.style.setProperty("--tilt-x", ((0.5 - y) * max * 2).toFixed(2) + "deg");
+          el.style.setProperty("--tilt-y", ((x - 0.5) * max * 2).toFixed(2) + "deg");
+          el.style.setProperty("--glare-x", (x * 100).toFixed(1) + "%");
+          el.style.setProperty("--glare-y", (y * 100).toFixed(1) + "%");
+        });
+      });
+      el.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(frame);
+        el.classList.remove("is-tilting");
+        el.style.setProperty("--tilt-x", "0deg");
+        el.style.setProperty("--tilt-y", "0deg");
+      });
+    });
+  }
+
+  /* ---------- Globe 3D du héros : suit le pointeur ---------- */
+  const orb = $("[data-orb]");
+  const hero = orb && orb.closest(".hero");
+  if (orb && hero && finePointer && !reduced) {
+    const tilt = $(".orb__tilt", orb);
+    let frame = 0;
+    hero.addEventListener("pointermove", (e) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const r = hero.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        tilt.style.setProperty("--orb-ry", (x * 30).toFixed(2) + "deg");
+        tilt.style.setProperty("--orb-rx", (-y * 22).toFixed(2) + "deg");
+      });
+    });
+    hero.addEventListener("pointerleave", () => {
+      tilt.style.setProperty("--orb-ry", "0deg");
+      tilt.style.setProperty("--orb-rx", "0deg");
+    });
   }
 
   /* ---------- FAQ : animation d'ouverture des <details> ---------- */
@@ -148,12 +206,29 @@
     };
     $("[data-carousel-prev]", c).addEventListener("click", () => go(-1));
     $("[data-carousel-next]", c).addEventListener("click", () => go(1));
+    // Effet cylindre : une diapositive qui entre ou sort de la zone visible pivote sur elle-même
+    const tilt3d = () => {
+      if (reduced) return;
+      const tr = track.getBoundingClientRect();
+      slides.forEach((s) => {
+        const r = s.getBoundingClientRect();
+        const p = ((r.left + r.width / 2) - (tr.left + tr.width / 2)) / tr.width; // 0 = centre
+        const out = Math.sign(p) * Math.max(0, Math.min(1, (Math.abs(p) - 0.3) / 0.7));
+        s.style.setProperty("--ba-rot", (-out * 38).toFixed(2) + "deg");
+        s.style.setProperty("--ba-scale", (1 - Math.abs(out) * 0.12).toFixed(3));
+        s.style.setProperty("--ba-op", (1 - Math.abs(out) * 0.5).toFixed(3));
+        s.style.setProperty("--ba-origin", out > 0 ? "0%" : out < 0 ? "100%" : "50%");
+      });
+    };
     const refresh = () => {
       const w = slides[0].getBoundingClientRect().width + 24;
       const i = Math.min(slides.length, Math.round(track.scrollLeft / w) + 1);
       if (status) status.textContent = `${i} / ${slides.length}`;
+      tilt3d();
     };
     track.addEventListener("scroll", () => requestAnimationFrame(refresh), { passive: true });
+    window.addEventListener("resize", () => requestAnimationFrame(tilt3d), { passive: true });
+    tilt3d();
   });
 
   /* ---------- Formulaire de devis en 3 écrans ---------- */

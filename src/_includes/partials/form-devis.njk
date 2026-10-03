@@ -95,7 +95,7 @@
     </div>
     <div class="field" data-field>
       <label for="telephone">Votre téléphone</label>
-      <input type="tel" id="telephone" name="telephone" inputmode="tel" autocomplete="tel" required pattern="^(\+33|0)[1-9](?:[ .-]?\d{2}){4}$" aria-describedby="hint-tel err-telephone">
+      <input type="tel" id="telephone" name="telephone" inputmode="tel" autocomplete="tel" required pattern="(\+33|0)[1-9]([ .\-]?[0-9]{2}){4}" aria-describedby="hint-tel err-telephone">
       <p class="hint" id="hint-tel">Pour vous rappeler et convenir d'un créneau.</p>
       <p class="field__error" id="err-telephone"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Indiquez un numéro de téléphone valide (10 chiffres).</p>
     </div>

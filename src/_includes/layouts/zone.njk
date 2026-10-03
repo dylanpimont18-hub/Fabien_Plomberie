@@ -26,7 +26,7 @@ layout: layouts/base.njk
       <p>{{ zone.topServicesText }}</p>
       <div class="zone-grid" style="margin-top:var(--sp-5)">
         {%- for slug in zone.topServices %}{% set s = services | find("slug", slug) %}
-        <a class="card" href="{{ ('/services/' + s.slug + '/') | url }}">
+        <a class="card" data-tilt href="{{ ('/services/' + s.slug + '/') | url }}">
           <svg class="icon icon--lg icon--accent" aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg>
           <h3>{{ s.name }} à {{ zone.city }}</h3>
           <p>{{ s.short }}</p>
@@ -34,9 +34,13 @@ layout: layouts/base.njk
         </a>
         {%- endfor %}
       </div>
+      {%- set otherServices = [] -%}
+      {%- for s in services %}{% if not zone.topServices.includes(s.slug) %}{% set otherServices = (otherServices.push(s), otherServices) %}{% endif %}{% endfor %}
+      {%- if otherServices.length %}
       <p style="margin-top:var(--sp-5)">Et bien sûr tous mes autres services :
-        {%- for s in services %}{% if slug not in zone.topServices and not (zone.topServices.includes(s.slug)) %} <a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name | lower }}</a>{{ "," if not loop.last else "." }}{% endif %}{% endfor %}
+        {%- for s in otherServices %} <a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name | lower }}</a>{{ "," if not loop.last else "." }}{% endfor %}
       </p>
+      {%- endif %}
 
       <h2>Communes voisines desservies</h2>
       <p>{{ zone.neighborsText }}</p>

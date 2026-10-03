@@ -64,6 +64,8 @@ p, li { max-width: var(--measure); }
 .prose h2 + *, .prose h3 + * { margin-top: var(--sp-4); }
 .prose ul, .prose ol { padding-left: 1.25em; }
 .prose li + li { margin-top: var(--sp-2); }
+.prose :is(.checklist, .map__list) { padding-left: 0; }
+.prose :is(.checklist, .map__list) li + li { margin-top: 0; }
 .prose li::marker { color: var(--accent); }
 .prose blockquote { border-left: 2px solid var(--accent); padding-left: var(--sp-5); font-family: var(--ff-display); font-size: var(--fs-h4); color: var(--fg-title); }
 .prose figure figcaption { font-size: var(--fs-small); color: var(--fg-2); margin-top: var(--sp-2); }
@@ -91,6 +93,8 @@ p, li { max-width: var(--measure); }
   .grid--2 { grid-template-columns: repeat(2, 1fr); }
   .grid--3 { grid-template-columns: repeat(3, 1fr); }
   .grid--12 { grid-template-columns: repeat(12, 1fr); }
+  .col-4 { grid-column: span 4; } .col-5 { grid-column: span 5; }
+  .col-7 { grid-column: span 7; } .col-8 { grid-column: span 8; }
 }
 .cluster { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
 .stack > * + * { margin-top: var(--sp-4); }

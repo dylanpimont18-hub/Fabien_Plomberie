@@ -1,16 +1,16 @@
----
-layout: layouts/zone.njk
-pagination:
-  data: zones
-  size: 1
-  alias: zone
-permalink: "/zones/{{ zone.slug }}/"
-eleventyComputed:
-  title: "{{ zone.title }}"
-  description: "{{ zone.metaDescription }}"
-  breadcrumb:
-    - name: "Zones d'intervention"
-      url: "/zones/plombier-vierzon/"
-    - name: "{{ zone.city }}"
-      url: "/zones/{{ zone.slug }}/"
+---js
+{
+  layout: "layouts/zone.njk",
+  pagination: { data: "zones", size: 1, alias: "zone" },
+  permalink: (data) => `/zones/${data.zone.slug}/`,
+  eleventyComputed: {
+    title: (data) => data.zone.title,
+    description: (data) => data.zone.metaDescription,
+    // Fonction (et non gabarit) : un tableau de gabarits n'est évalué qu'une fois pour toute la pagination
+    breadcrumb: (data) => [
+      { name: "Zones d'intervention", url: "/zones/plombier-vierzon/" },
+      { name: data.zone.city, url: `/zones/${data.zone.slug}/` },
+    ],
+  },
+}
 ---

@@ -60,8 +60,7 @@
 
 /* ---------- Portrait ---------- */
 .portrait { display: grid; gap: var(--sp-6); align-items: center; }
-.portrait__visual { position: relative; }
-.portrait__visual .ph { max-width: 26rem; }
+.portrait__visual { position: relative; max-width: 26rem; }
 .portrait__caption { position: absolute; left: var(--sp-5); bottom: var(--sp-5); background: var(--c-nuit); color: var(--c-ivoire); padding: var(--sp-3) var(--sp-4); border-radius: var(--r-sm); font-size: var(--fs-small); }
 .portrait__caption strong { display: block; font-family: var(--ff-display); font-weight: 500; font-size: 1.125rem; }
 .portrait__text > * + * { margin-top: var(--sp-4); }
@@ -69,7 +68,7 @@
 .portrait__text p { color: var(--fg); }
 @media (min-width: 64em) {
   .portrait { grid-template-columns: 5fr 7fr; gap: var(--sp-9); }
-  .portrait__visual { transform: translateY(-2rem); }
+  .portrait__visual { translate: 0 -2rem; }
 }
 
 /* ---------- Pages services / zones ---------- */
@@ -118,7 +117,8 @@
 
 /* ---------- Impression ---------- */
 @media print {
-  .header, .mobile-bar, .demo-banner, .menu, .hero__scroll, .cta, .reveal { display: none !important; }
+  .header, .mobile-bar, .demo-banner, .menu, .hero__scroll, .hero__3d, .cta { display: none !important; }
+  .js .reveal, .js .reveal-lines .line > span, .js [data-reveal-group] > * { opacity: 1 !important; transform: none !important; }
   body { padding: 0; background: #fff; color: #000; }
   a::after { content: " (" attr(href) ")"; font-size: .8em; }
 }

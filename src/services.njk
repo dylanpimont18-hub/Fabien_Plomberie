@@ -1,16 +1,16 @@
----
-layout: layouts/service.njk
-pagination:
-  data: services
-  size: 1
-  alias: service
-permalink: "/services/{{ service.slug }}/"
-eleventyComputed:
-  title: "{{ service.title }}"
-  description: "{{ service.metaDescription }}"
-  breadcrumb:
-    - name: "Services"
-      url: "/services/depannage-plomberie/"
-    - name: "{{ service.name }}"
-      url: "/services/{{ service.slug }}/"
+---js
+{
+  layout: "layouts/service.njk",
+  pagination: { data: "services", size: 1, alias: "service" },
+  permalink: (data) => `/services/${data.service.slug}/`,
+  eleventyComputed: {
+    title: (data) => data.service.title,
+    description: (data) => data.service.metaDescription,
+    // Fonction (et non gabarit) : un tableau de gabarits n'est évalué qu'une fois pour toute la pagination
+    breadcrumb: (data) => [
+      { name: "Services", url: "/services/depannage-plomberie/" },
+      { name: data.service.name, url: `/services/${data.service.slug}/` },
+    ],
+  },
+}
 ---

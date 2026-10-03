@@ -1,6 +1,6 @@
 {#- Carte SVG stylisée de la zone d'intervention (coordonnées relatives, pas un fond de carte) -#}
-<div class="map">
-  <svg viewBox="0 0 720 420" role="group" aria-labelledby="map-title map-desc">
+<div class="map" data-map3d>
+  <svg viewBox="0 -24 720 470" role="group" aria-labelledby="map-title map-desc">
     <title id="map-title">Zone d'intervention autour de Vierzon</title>
     <desc id="map-desc">Carte stylisée : cercle d'intervention d'environ 50 km centré sur Vierzon, avec les communes desservies et l'atelier à Vignoux-sur-Barangeon.</desc>
     <defs>
@@ -11,7 +11,7 @@
     <!-- Rayon d'intervention -->
     <circle cx="300" cy="230" r="205" fill="url(#map-trame)"/>
     <circle cx="300" cy="230" r="205" fill="none" stroke="#B87333" stroke-width="1.5" stroke-dasharray="4 6"/>
-    <text x="300" y="38" text-anchor="middle" font-size="12" font-weight="600" letter-spacing="1.5" fill="#8A5422">RAYON D'ENVIRON 50 KM</text>
+    <text x="300" y="-6" text-anchor="middle" font-size="12" font-weight="600" letter-spacing="1.5" fill="#8A5422">RAYON D'ENVIRON 50 KM</text>
     <!-- Rivières (tracés stylisés) : le Cher et l'Yèvre -->
     <path d="M40 300 C 120 280, 200 250, 300 232 S 420 200, 470 170" fill="none" stroke="#1F3350" stroke-opacity=".35" stroke-width="2"/>
     <path d="M300 232 C 360 250, 440 270, 560 300" fill="none" stroke="#1F3350" stroke-opacity=".35" stroke-width="2"/>
@@ -20,7 +20,7 @@
     <!-- Communes -->
     {%- for z in zones %}
     {%- set zx = z.map.x %}{%- set zy = z.map.y %}
-    <a class="map__city {{ 'map__home' if z.map.home }}" href="{{ ('/zones/' + z.slug + '/') | url }}" aria-label="Plombier à {{ z.city }}">
+    <a class="map__city {{ 'map__home' if z.map.home }}" style="--i:{{ loop.index0 }}" href="{{ ('/zones/' + z.slug + '/') | url }}" aria-label="Plombier à {{ z.city }}">
       <title>Plombier à {{ z.city }}</title>
       {%- if z.map.anchor == "end" %}
       <rect x="{{ zx - 150 }}" y="{{ zy - 16 }}" width="164" height="32" rx="16" fill="transparent" stroke="transparent"/>
