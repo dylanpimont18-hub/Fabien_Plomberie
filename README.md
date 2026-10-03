@@ -54,18 +54,18 @@ Sert `_site/` localement et audite cinq pages types en mobile (performance, acce
 
 ## Déploiement GitHub Pages
 
-Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) construit et publie le site à chaque push sur `main` (ou `master`), et à la demande via « Run workflow ».
+Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) construit le site et publie `_site/` sur la branche `gh-pages` à chaque push sur `main`, `master` ou `claude/site-fremont-plomberie`, et à la demande via « Run workflow ».
 
-1. Dans le dépôt GitHub : **Settings → Pages → Build and deployment → Source : GitHub Actions**.
-2. Pousser sur `main`. Le site est publié sur `https://<utilisateur>.github.io/<depot>/`. Le workflow calcule lui-même `SITE_URL` et `PATH_PREFIX` (avec ou sans domaine personnalisé) grâce à `actions/configure-pages`.
-3. Pour un domaine personnalisé : **Settings → Pages → Custom domain**, puis chez le registrar un `CNAME` `www` vers `<utilisateur>.github.io` et les quatre enregistrements `A` de GitHub Pages pour l'apex. Cocher **Enforce HTTPS**.
+1. Dans le dépôt GitHub : **Settings → Pages → Build and deployment → Source : Deploy from a branch → `gh-pages` / `(root)`**. GitHub l'active en général tout seul au premier push de `gh-pages` sur un dépôt public.
+2. Le site est servi sur `https://<utilisateur>.github.io/<depot>/`. Le workflow calcule `SITE_URL` et `PATH_PREFIX` à partir du nom du dépôt.
+3. Pour un domaine personnalisé, définir trois variables de dépôt (**Settings → Secrets and variables → Actions → Variables**) : `CUSTOM_DOMAIN` (`www.exemple.fr`), `SITE_URL` (`https://www.exemple.fr`) et `PATH_PREFIX` (`/`). Chez le registrar, ajouter un `CNAME` `www` vers `<utilisateur>.github.io`, puis cocher **Enforce HTTPS** dans Settings → Pages.
 
 ## Passer de la démo à la production
 
 1. Remplir toutes les informations manquantes dans `src/_data/site.js` (email, horaires, assurance, identifiant Formspree, lien d'avis Google, mesure d'audience, nom de l'agence) et dans les contenus : `grep -rn "À COMPLÉTER" src/` doit ne rien renvoyer.
 2. Remplacer les placeholders photo (`<div class="ph …">`) par de vraies images via le shortcode `{% image "src/assets/img/photo.jpg", "texte alternatif", "(min-width: 64em) 50vw, 100vw" %}`, qui génère AVIF, WebP et JPEG en plusieurs largeurs avec `srcset`.
 3. Déposer le logo haute définition de l'artisan dans `src/assets/img/logo-original.png` (ou remplacer le logotype proposé dans `src/_includes/partials/logo.njk` et `src/favicon.svg`).
-4. Passer le mode en production : soit **Settings → Secrets and variables → Actions → Variables → `SITE_MODE` = `prod`**, soit lancer le workflow manuellement avec `site_mode = prod`.
+4. Passer le mode en production : soit **Settings → Secrets and variables → Actions → Variables → `SITE_MODE` = `prod`** puis relancer le workflow, soit le lancer manuellement avec `site_mode = prod`.
 5. Vérifier : `https://<domaine>/robots.txt` autorise l'indexation, `sitemap.xml` est référencé, aucune balise `noindex` dans le code source de l'accueil.
 6. Déclarer le site dans Google Search Console et Bing Webmaster Tools, puis suivre `SEO-HORS-SITE.md`.
 

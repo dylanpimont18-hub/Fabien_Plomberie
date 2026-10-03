@@ -1,5 +1,8 @@
 name: Déploiement GitHub Pages
 
+# Construit le site Eleventy et publie le dossier _site sur la branche gh-pages.
+# GitHub Pages sert cette branche (Settings → Pages → Source : Deploy from a branch → gh-pages / root).
+
 on:
   push:
     branches: [main, master, claude/site-fremont-plomberie]
@@ -13,16 +16,14 @@ on:
         options: [demo, prod]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,32 +36,24 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
 
-      - name: Configurer GitHub Pages
-        id: pages
-        uses: actions/configure-pages@v5
-        with:
-          # active Pages (source : GitHub Actions) si ce n'est pas encore fait
-          enablement: true
-
       - name: Construire le site
         env:
-          # demo par défaut ; passer en prod via "Run workflow" ou en définissant la variable de dépôt SITE_MODE
+          # demo par défaut ; passer en prod via "Run workflow" ou la variable de dépôt SITE_MODE
           SITE_MODE: ${{ github.event.inputs.site_mode || vars.SITE_MODE || 'demo' }}
-          # URL et préfixe calculés par configure-pages (fonctionne avec ou sans domaine personnalisé)
-          SITE_URL: ${{ steps.pages.outputs.origin }}${{ steps.pages.outputs.base_path }}
-          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
+          # Sans domaine personnalisé : https://<utilisateur>.github.io/<depot>/
+          # Avec un domaine : définir les variables de dépôt SITE_URL (https://www.exemple.fr) et PATH_PREFIX (/)
+          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+          PATH_PREFIX: ${{ vars.PATH_PREFIX || format('/{0}/', github.event.repository.name) }}
         run: npm run build
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Publier sur la branche gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          force_orphan: true
+          cname: ${{ vars.CUSTOM_DOMAIN }}
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "Déploiement ${{ github.sha }}"
