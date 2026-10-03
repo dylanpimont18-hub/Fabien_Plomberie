@@ -22,7 +22,7 @@ function buildCss() {
     targets: { chrome: 100 << 16, firefox: 100 << 16, safari: (15 << 16) | (4 << 8) },
   });
   let css = code.toString();
-  if (PATH_PREFIX !== "/") css = css.replace(/url\("\/assets\//g, `url("${PATH_PREFIX}assets/`);
+  if (PATH_PREFIX !== "/") css = css.replace(/url\((["']?)\/assets\//g, `url($1${PATH_PREFIX}assets/`);
   return css;
 }
 
@@ -125,7 +125,7 @@ module.exports = function (eleventyConfig) {
       const from = this.page.url;
       const strip = (val) => (PATH_PREFIX !== "/" && val.startsWith(PATH_PREFIX) ? "/" + val.slice(PATH_PREFIX.length) : val);
       html = html.replace(/\s(href|src|poster|data-merci)="(\/[^"\/][^"]*|\/)"/g, (m, attr, val) => ` ${attr}="${toRelative(from, strip(val))}"`);
-      html = html.replace(/url\("(\/[^"]+)"\)/g, (m, val) => `url("${toRelative(from, strip(val))}")`);
+      html = html.replace(/url\((["']?)(\/[^"')]+)\1\)/g, (m, q, val) => `url(${q}${toRelative(from, strip(val))}${q})`);
     }
     if (IS_PROD_BUILD) {
       html = await minifyHtml(html, {
