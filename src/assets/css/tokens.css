@@ -1,0 +1,106 @@
+/* ==========================================================================
+   TOKENS — Frémont Plomberie Services (voir DESIGN.md §5 et §12)
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* Couleurs */
+  --c-nuit: #0E1A2B;        --c-nuit-2: #15243A;       --c-nuit-3: #1F3350;
+  --c-cuivre: #B87333;      --c-cuivre-clair: #D9A066; --c-cuivre-encre: #8A5422;
+  --c-cuivre-hover: #C27F3F;
+  --c-ivoire: #F6F3EE;      --c-ivoire-2: #EFEAE2;     --c-ivoire-3: #E6DFD4;
+  --c-anthracite: #1C1F24;  --c-gris: #5A5E66;         --c-gris-clair: #B9BDC4;
+  --c-blanc: #FFFFFF;       --c-succes: #2E6B4A;       --c-erreur: #A8362C;
+
+  /* Rôles sémantiques (contexte clair) */
+  --bg: var(--c-ivoire);    --bg-2: var(--c-ivoire-2);  --bg-3: var(--c-ivoire-3);
+  --bd-c: var(--c-ivoire-3);
+  --fg: var(--c-anthracite); --fg-2: var(--c-gris);     --fg-title: var(--c-nuit);
+  --accent: var(--c-cuivre); --accent-text: var(--c-cuivre-encre);
+  --focus-ring: var(--c-cuivre);
+
+  /* Typo */
+  --ff-display: "Fraunces", "Fraunces Fallback", Georgia, "Times New Roman", serif;
+  --ff-body: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-display: clamp(2.75rem, 1.8rem + 4.2vw, 5.5rem);
+  --fs-h1: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  --fs-h3: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+  --fs-h4: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --fs-quote: clamp(1.75rem, 1.2rem + 2.4vw, 3.25rem);
+  --fs-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --fs-eyebrow: 0.75rem;
+  --lh-tight: 1.1; --lh-body: 1.6; --measure: 68ch;
+
+  /* Espacements */
+  --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem; --sp-5: 1.5rem;
+  --sp-6: 2rem; --sp-7: 3rem; --sp-8: 4rem; --sp-9: 6rem; --sp-10: 8rem;
+  --section-y: clamp(var(--sp-8), 6vw + 1rem, var(--sp-9));
+  --gutter: clamp(var(--sp-4), 4vw, var(--sp-5));
+  --container: 80rem; --container-narrow: 46rem; --grid-gap: var(--sp-5);
+  --header-h: 4rem; --mobile-bar-h: 3.75rem; --demo-h: 0px;
+
+  /* Rayons, ombres, bordures */
+  --r-xs: 2px; --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-pill: 999px;
+  --sh-1: 0 1px 2px rgb(14 26 43 / .06), 0 1px 1px rgb(14 26 43 / .04);
+  --sh-2: 0 8px 24px -8px rgb(14 26 43 / .18);
+  --sh-3: 0 -4px 20px -6px rgb(14 26 43 / .22);
+  --sh-cuivre: 0 8px 24px -10px rgb(184 115 51 / .45);
+  --bd: 1px solid var(--bd-c);
+  --focus: 0 0 0 3px var(--bg), 0 0 0 6px var(--focus-ring);
+
+  /* Motion */
+  --d-fast: 160ms; --d-base: 240ms; --d-slow: 480ms; --d-reveal: 700ms;
+  --e-out: cubic-bezier(.22, 1, .36, 1);
+  --e-in-out: cubic-bezier(.65, 0, .35, 1);
+  --e-std: cubic-bezier(.4, 0, .2, 1);
+  --reveal-y: 16px; --stagger: 60ms;
+
+  /* Z */
+  --z-header: 50; --z-mobile-bar: 60; --z-demo-banner: 70; --z-menu: 80; --z-skip: 100;
+}
+
+@media (min-width: 48em) { :root { --header-h: 4.5rem; } }
+
+/* Contexte sombre : on ne change que les rôles */
+.on-dark, .section--nuit {
+  --bg: var(--c-nuit); --bg-2: var(--c-nuit-2); --bg-3: var(--c-nuit-3); --bd-c: var(--c-nuit-3);
+  --fg: var(--c-ivoire); --fg-2: var(--c-gris-clair); --fg-title: var(--c-ivoire);
+  --accent: var(--c-cuivre-clair); --accent-text: var(--c-cuivre-clair);
+  --focus-ring: var(--c-cuivre-clair);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --d-fast: 0ms; --d-base: 0ms; --d-slow: 0ms; --d-reveal: 0ms; --reveal-y: 0px; --stagger: 0ms; }
+}
+
+/* Polices auto-hébergées (woff2, sous-ensemble latin) */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/fraunces-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Polices de repli calibrées pour limiter le décalage de mise en page (CLS) */
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 104%; ascent-override: 98%; descent-override: 26%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Helvetica");
+  size-adjust: 107%; ascent-override: 90%; descent-override: 22%; line-gap-override: 0%;
+}

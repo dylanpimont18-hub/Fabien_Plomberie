@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: "Merci, votre demande est bien envoyée"
+description: "Votre demande de devis a bien été transmise à Fabien Frémont. Il vous rappelle rapidement."
+permalink: /merci/
+noindex: true
+---
+<section class="container--narrow simple-page">
+  <p class="eyebrow">Demande envoyée</p>
+  <h1 class="display">Merci, je vous rappelle rapidement.</h1>
+  <div class="prose">
+    <p class="lead">Votre demande est bien arrivée. Je la lis personnellement et je vous rappelle au numéro indiqué pour convenir d'un passage ou vous donner un premier avis.</p>
+    <div class="note note--ok">
+      <p><strong>C'est urgent ?</strong> Si l'eau coule, coupez le robinet d'arrêt général et appelez-moi directement au <a href="{{ site.phoneHref }}" data-track="call" data-track-where="merci">{{ site.phone }}</a>. En attendant, voici <a href="{{ '/conseils/fuite-d-eau-les-bons-reflexes/' | url }}">les bons réflexes en cas de fuite</a>.</p>
+    </div>
+    <p>Vous pouvez aussi m'envoyer une photo du problème par WhatsApp depuis la <a href="{{ '/contact/' | url }}">page contact</a> : cela m'aide à préparer mon passage.</p>
+    {%- if site.googleReviewUrl %}
+    <p>Déjà client ? <a href="{{ site.googleReviewUrl }}" rel="noopener" target="_blank" data-track="review">Laissez-moi un avis Google</a>, cela m'aide beaucoup.</p>
+    {%- endif %}
+    <p><a class="btn btn--secondary" href="{{ '/' | url }}">Retour à l'accueil</a></p>
+  </div>
+</section>

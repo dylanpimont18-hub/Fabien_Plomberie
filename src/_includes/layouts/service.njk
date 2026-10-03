@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+---
+{%- set faqItems = service.faq -%}
+<div class="container page-head page-head--split">
+  <div>
+    {% include "partials/breadcrumb.njk" %}
+    <p class="eyebrow">Service</p>
+    <h1>{{ service.h1 }}</h1>
+    <p class="lead">{{ service.lead }}</p>
+    <div class="hero__actions" style="margin-top:var(--sp-6)">
+      <a class="btn btn--primary" href="{{ site.phoneHref }}" data-track="call" data-track-where="service-head"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone }}</a>
+      <a class="btn btn--secondary" href="{{ '/contact/' | url }}?besoin={{ service.slug }}#devis">Demander un devis</a>
+    </div>
+  </div>
+  <div class="ph ph--3-2 reveal" role="img" aria-label="Photo de chantier à fournir : {{ service.name | lower }}"><span class="ph__label">Photo chantier à fournir</span></div>
+</div>
+
+<div class="container section" style="padding-top:0">
+  <div class="service-layout">
+    <article class="prose">
+      {%- for sec in service.sections %}
+      <h2>{{ sec.title }}</h2>
+      {%- if sec.items %}
+      <ul class="checklist">
+        {%- for it in sec.items %}
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>{{ it | todo | safe }}</span></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+      {%- if sec.text %}<p>{{ sec.text | todo | safe }}</p>{% endif %}
+      {%- endfor %}
+
+      <h2>Questions fréquentes</h2>
+      {% set faqName = "faq-service" %}{% include "partials/faq.njk" %}
+    </article>
+
+    <aside aria-label="Informations complémentaires">
+      <div class="aside-card aside-card--nuit on-dark">
+        <h2>Devis gratuit</h2>
+        <p>Décrivez-moi votre besoin, j'évalue et je vous rappelle. Un seul interlocuteur du devis au chantier.</p>
+        <a class="btn btn--primary btn--block" href="{{ '/contact/' | url }}?besoin={{ service.slug }}#devis">Demander un devis</a>
+      </div>
+      <div class="aside-card">
+        <h2>Autres services</h2>
+        <ul>
+          {%- for slug in service.related %}{% set r = services | find("slug", slug) %}
+          <li><a href="{{ ('/services/' + r.slug + '/') | url }}">{{ r.name }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div class="aside-card">
+        <h2>Où j'interviens</h2>
+        <ul>
+          {%- for z in zones %}
+          <li><a href="{{ ('/zones/' + z.slug + '/') | url }}">{{ service.name }} à {{ z.city }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- if service.articles and service.articles.length %}
+      <div class="aside-card">
+        <h2>Conseils</h2>
+        <ul>
+          {%- for slug in service.articles %}{% for a in collections.conseils %}{% if a.fileSlug == slug %}
+          <li><a href="{{ a.url | url }}">{{ a.data.title }}</a></li>
+          {%- endif %}{% endfor %}{% endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+    </aside>
+  </div>
+</div>
+
+{% set ctaTitle = "Besoin d'un plombier pour " + (service.name | lower) + " ? Appelez-moi." %}
+{% include "partials/cta.njk" %}

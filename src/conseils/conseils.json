@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/article.njk",
+  "tags": ["conseil"],
+  "permalink": "/conseils/{{ page.fileSlug }}/"
+}

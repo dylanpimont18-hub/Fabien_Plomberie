@@ -1,0 +1,76 @@
+---
+layout: layouts/page.njk
+title: "Mentions légales et confidentialité"
+description: "Mentions légales de Frémont Plomberie Services (EI, SIREN 932 403 280) : éditeur, hébergeur, assurances, politique de confidentialité, aucun cookie."
+permalink: /mentions-legales/
+eyebrow: "Informations légales"
+h1: "Mentions légales"
+noindex: false
+breadcrumb:
+  - name: "Mentions légales"
+    url: "/mentions-legales/"
+---
+<section class="container--narrow section legal" style="padding-top:0">
+  <div class="prose">
+    <p class="small muted">Conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN).</p>
+
+    <h2 id="editeur">Éditeur du site</h2>
+    <dl>
+      <dt>Dénomination</dt><dd>{{ site.name }}</dd>
+      <dt>Forme juridique</dt><dd>{{ site.legalForm }}</dd>
+      <dt>Responsable de la publication</dt><dd>{{ site.owner }}, gérant</dd>
+      <dt>SIREN</dt><dd>{{ site.siren }}</dd>
+      <dt>Siège</dt><dd>{{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }}, France</dd>
+      <dt>Téléphone</dt><dd><a href="{{ site.phoneHref }}">{{ site.phone }}</a></dd>
+      <dt>Email</dt><dd>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}<mark class="todo">{{ site.placeholders.email }}</mark>{% endif %}</dd>
+      <dt>TVA</dt><dd>{{ site.vatNotice }}</dd>
+      <dt>Activité</dt><dd>Travaux d'installation d'eau et de gaz en tous locaux (plomberie) <mark class="todo">[À COMPLÉTER : code APE/NAF exact et inscription au Répertoire des Métiers]</mark></dd>
+    </dl>
+
+    <h2 id="assurance">Assurances professionnelles</h2>
+    <p>Conformément aux articles L.241-1 et suivants du Code des assurances, l'entreprise est tenue de souscrire une assurance de responsabilité décennale pour les travaux qui y sont soumis.</p>
+    <dl>
+      <dt>Assurance décennale</dt><dd><mark class="todo">[À COMPLÉTER : nom de l'assureur, adresse, numéro de contrat, couverture géographique]</mark></dd>
+      <dt>Responsabilité civile professionnelle</dt><dd><mark class="todo">[À COMPLÉTER : nom de l'assureur, numéro de contrat]</mark></dd>
+    </dl>
+
+    <h2 id="hebergeur">Hébergement</h2>
+    <p>Le site est hébergé par {{ site.hostName }}, {{ site.hostAddress }} — <a href="{{ site.hostUrl }}" rel="noopener">{{ site.hostUrl }}</a> (service GitHub Pages).</p>
+
+    <h2 id="realisation">Conception et réalisation</h2>
+    <p>Site conçu et réalisé par <mark class="todo">[MA MARQUE]</mark> <mark class="todo">[À COMPLÉTER : raison sociale, SIREN, site web]</mark>.</p>
+
+    <h2 id="propriete">Propriété intellectuelle</h2>
+    <p>L'ensemble des contenus de ce site (textes, logotype, illustrations, photographies, structure) est la propriété de {{ site.name }} ou de ses auteurs, et protégé par le Code de la propriété intellectuelle. Toute reproduction, même partielle, est soumise à autorisation préalable. Les polices de caractères Fraunces et Inter sont utilisées sous licence SIL Open Font License.</p>
+
+    <h2 id="confidentialite">Politique de confidentialité (RGPD)</h2>
+    <h3>Responsable du traitement</h3>
+    <p>{{ site.owner }}, {{ site.name }}, {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }}.</p>
+
+    <h3>Données collectées et finalités</h3>
+    <p>Le formulaire de demande de devis collecte : le type de besoin, la commune, le niveau d'urgence, votre nom, votre numéro de téléphone, votre adresse email (facultative) et votre message. Ces données servent uniquement à vous recontacter au sujet de votre demande et à établir un devis. Base légale : votre consentement (case à cocher) et les mesures précontractuelles à votre demande (art. 6.1.a et 6.1.b du RGPD).</p>
+    <p>Les appels téléphoniques et les messages WhatsApp sont traités directement par {{ site.owner }} sur son téléphone professionnel.</p>
+
+    <h3>Destinataires et sous-traitants</h3>
+    <p>Les demandes envoyées par le formulaire transitent par le service Formspree (Formspree Inc., États-Unis), qui les transmet par email à {{ site.name }}. Formspree agit en qualité de sous-traitant ; ses engagements figurent dans sa politique de confidentialité. <mark class="todo">[À COMPLÉTER : vérifier les clauses contractuelles types pour le transfert hors UE, ou choisir un prestataire européen]</mark>. Aucune donnée n'est vendue ni transmise à des tiers à des fins commerciales.</p>
+
+    <h3>Durée de conservation</h3>
+    <p>Les demandes de devis sont conservées pendant la durée nécessaire au traitement de la demande, puis au plus trois ans après le dernier contact à des fins de suivi commercial, sauf obligation légale de conservation plus longue (devis et factures : dix ans).</p>
+
+    <h3>Vos droits</h3>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi que du droit de retirer votre consentement à tout moment. Pour l'exercer, écrivez à {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}<mark class="todo">{{ site.placeholders.email }}</mark>{% endif %} ou par courrier à l'adresse du siège. Vous pouvez également introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).</p>
+
+    <h3 id="cookies">Cookies et mesure d'audience</h3>
+    <p><strong>Ce site n'utilise aucun cookie de traçage</strong> et aucun traceur publicitaire. Il ne dépose aucun cookie nécessitant votre consentement, ce qui explique l'absence de bandeau de consentement.</p>
+    <p>La mesure d'audience, lorsqu'elle est activée, repose sur une solution sans cookie et sans identifiant individuel (<mark class="todo">[À COMPLÉTER : Plausible ou Umami]</mark>), exemptée de consentement au sens des lignes directrices de la CNIL : elle ne permet pas de suivre un visiteur d'un site à l'autre ni de l'identifier. Les seuls éléments comptés sont les pages vues, les clics sur le numéro de téléphone, les envois de formulaire et les clics vers WhatsApp.</p>
+    <p>Le navigateur peut conserver localement une préférence d'affichage (fermeture du bandeau de démonstration) dans le stockage de session ; cette donnée ne quitte pas votre appareil et disparaît à la fermeture du navigateur.</p>
+
+    <h3>Liens externes</h3>
+    <p>Le site peut contenir des liens vers des services tiers (Google pour les avis, WhatsApp pour l'envoi de photos). Ces services ont leurs propres politiques de confidentialité, qui s'appliquent dès que vous les utilisez.</p>
+
+    <h2 id="credits">Crédits</h2>
+    <p>Logotype, iconographie et carte stylisée : créations originales pour {{ site.name }}. Photographies : <mark class="todo">[À COMPLÉTER : crédits des photos de chantier et du portrait]</mark>.</p>
+
+    <p class="small muted">Dernière mise à jour : <time datetime="{{ buildDate | isoDate }}">{{ buildDate | frDate }}</time>.</p>
+  </div>
+</section>

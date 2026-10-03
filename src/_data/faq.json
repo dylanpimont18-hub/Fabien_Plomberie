@@ -1,0 +1,26 @@
+[
+  {
+    "q": "Dans quelles communes intervenez-vous ?",
+    "a": "Je suis installé à Vignoux-sur-Barangeon et j'interviens dans un rayon d'environ 50 km autour de Vierzon : Mehun-sur-Yèvre, Foëcy, Neuvy-sur-Barangeon, Bourges et les communes alentour. Si vous hésitez, appelez-moi : je vous dis tout de suite si je me déplace chez vous."
+  },
+  {
+    "q": "Le devis est-il gratuit ?",
+    "a": "Oui. Je vous remets un devis détaillé avant toute intervention planifiée, sans engagement. Pour un dépannage, je vous annonce le prix sur place avant de commencer."
+  },
+  {
+    "q": "Intervenez-vous en urgence ?",
+    "a": "Je fais le maximum pour intervenir rapidement en cas de fuite ou de panne d'eau chaude, selon ma tournée et la distance. Appelez-moi au 06 46 39 61 06 : je vous donne un créneau honnête, et je vous explique comment sécuriser votre installation en attendant. [À COMPLÉTER : horaires et conditions d'astreinte]"
+  },
+  {
+    "q": "Qui vient chez moi ?",
+    "a": "Moi, Fabien Frémont. Je suis seul dans l'entreprise : la personne qui vous répond au téléphone, qui fait le devis et qui intervient est la même."
+  },
+  {
+    "q": "Êtes-vous assuré ?",
+    "a": "[À COMPLÉTER : assurance décennale et responsabilité civile professionnelle, nom de l'assureur et numéro de contrat]. Les références figureront dans les mentions légales et sur chaque devis."
+  },
+  {
+    "q": "Quels moyens de paiement acceptez-vous ?",
+    "a": "[À COMPLÉTER : virement, chèque, carte bancaire, espèces, conditions d'acompte]."
+  }
+]

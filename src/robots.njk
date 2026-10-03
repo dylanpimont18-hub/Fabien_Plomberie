@@ -1,0 +1,15 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if site.isDemo %}
+# Mode maquette (SITE_MODE=demo) : indexation interdite
+User-agent: *
+Disallow: /
+{%- else %}
+User-agent: *
+Allow: /
+Disallow: /merci/
+
+Sitemap: {{ site.url }}{{ '/sitemap.xml' | url }}
+{%- endif %}

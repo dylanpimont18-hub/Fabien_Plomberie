@@ -1,0 +1,31 @@
+---
+layout: layouts/page.njk
+title: "Conseils de plombier : fuite, chauffe-eau, douche"
+description: "Des conseils sans jargon par Fabien Frémont, artisan plombier dans le Cher : que faire en cas de fuite, quand remplacer un chauffe-eau, comment choisir sa douche."
+permalink: /conseils/
+eyebrow: "Conseils"
+h1: "Des conseils de plombier, sans jargon et sans arrière-pensée"
+lead: "Ce que j'explique à mes clients sur les chantiers, écrit pour que vous puissiez vous en servir chez vous, avant ou sans mon intervention."
+breadcrumb:
+  - name: "Conseils"
+    url: "/conseils/"
+---
+<section class="container section" style="padding-top:0">
+  <div class="grid grid--3">
+    {%- for a in collections.conseils %}
+    <a class="card card--article reveal" href="{{ a.url | url }}" style="--i:{{ loop.index0 }}">
+      <div class="ph ph--3-2" role="img" aria-label="Illustration à fournir"><span class="ph__label">Illustration à fournir</span></div>
+      <div class="card__body">
+        <span class="card__meta">{{ a.data.category }} · {{ a.templateContent | readingTime }} min</span>
+        <h3>{{ a.data.title }}</h3>
+        <p>{{ a.data.description }}</p>
+        <span class="card__more">Lire l'article <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </div>
+    </a>
+    {%- endfor %}
+  </div>
+  <div class="note" style="margin-top:var(--sp-8)">
+    <p><strong>D'autres sujets viendront</strong> au fil des questions que me posent mes clients. Si un sujet vous intéresse, dites-le-moi : <a href="{{ '/contact/' | url }}">page contact</a>.</p>
+  </div>
+</section>
+{% include "partials/cta.njk" %}

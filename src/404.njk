@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: "Page introuvable"
+description: "Cette page n'existe pas ou a été déplacée."
+permalink: /404.html
+noindex: true
+---
+<section class="container--narrow simple-page">
+  <p class="eyebrow">Erreur 404</p>
+  <h1 class="display">Cette page a dû fuir quelque part.</h1>
+  <div class="prose">
+    <p class="lead">L'adresse demandée n'existe pas ou a été déplacée. Pas de panique : tout est à portée de main.</p>
+    <ul>
+      <li><a href="{{ '/' | url }}">Retour à l'accueil</a></li>
+      {%- for s in services %}<li><a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name }}</a></li>{% endfor %}
+      <li><a href="{{ '/conseils/' | url }}">Conseils</a></li>
+      <li><a href="{{ '/contact/' | url }}">Contact et devis</a></li>
+    </ul>
+    <p>Et si c'est une vraie fuite : <a href="{{ site.phoneHref }}" data-track="call" data-track-where="404">{{ site.phone }}</a>.</p>
+  </div>
+</section>

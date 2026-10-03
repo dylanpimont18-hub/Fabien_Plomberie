@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+ogType: article
+article: true
+---
+{%- set breadcrumb = [{ name: "Conseils", url: "/conseils/" }, { name: (h1 or title), url: page.url }] -%}
+<article class="article">
+  <div class="container--narrow article__head">
+    {% include "partials/breadcrumb.njk" %}
+    <p class="eyebrow">Conseil · {{ category }}</p>
+    <h1>{{ h1 or title }}</h1>
+    <p class="lead">{{ description }}</p>
+    <div class="page-head__meta">
+      <span><svg class="icon" aria-hidden="true" style="width:1rem;height:1rem;vertical-align:-2px"><use href="#i-personne"/></svg> {{ site.owner }}, artisan plombier</span>
+      <span><svg class="icon" aria-hidden="true" style="width:1rem;height:1rem;vertical-align:-2px"><use href="#i-calendar"/></svg> <time datetime="{{ page.date | isoDate }}">{{ page.date | frDate }}</time></span>
+      <span><svg class="icon" aria-hidden="true" style="width:1rem;height:1rem;vertical-align:-2px"><use href="#i-clock"/></svg> {{ content | readingTime }} min de lecture</span>
+    </div>
+  </div>
+  <div class="container article__visual">
+    <div class="ph ph--16-9" role="img" aria-label="Illustration à fournir"><span class="ph__label">Photo à fournir · {{ illustration or title }}</span></div>
+  </div>
+  <div class="container--narrow">
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+    <div class="article__footer">
+      <div class="note">
+        <p><strong>Besoin d'un coup de main ?</strong> Je suis {{ site.owner }}, plombier à {{ site.address.city }}. J'interviens dans un rayon de {{ site.radiusKm }} km autour de {{ site.hub }} : <a href="{{ site.phoneHref }}" data-track="call" data-track-where="article">{{ site.phone }}</a> ou <a href="{{ '/contact/' | url }}#devis">demande de devis en ligne</a>.</p>
+      </div>
+      {%- if relatedService %}{% set rs = services | find("slug", relatedService) %}
+      <p>Service associé : <a href="{{ ('/services/' + rs.slug + '/') | url }}">{{ rs.name }}</a></p>
+      {%- endif %}
+      <nav class="article-nav" aria-label="Autres conseils">
+        {%- for a in collections.conseils %}{% if a.url != page.url %}
+        <a class="card" href="{{ a.url | url }}">
+          <span class="card__meta">{{ a.data.category }}</span>
+          <h3>{{ a.data.title }}</h3>
+          <span class="card__more">Lire <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        {%- endif %}{% endfor %}
+      </nav>
+    </div>
+  </div>
+</article>
+{% include "partials/cta.njk" %}

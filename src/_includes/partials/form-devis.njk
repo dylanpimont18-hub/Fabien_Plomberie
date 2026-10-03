@@ -1,0 +1,127 @@
+{#- Formulaire de devis en 3 écrans : amélioration progressive (une seule colonne sans JS) -#}
+{%- set formAction = ("https://formspree.io/f/" + site.formspreeId) if site.formspreeId else "#" -%}
+<form class="form-devis" id="devis" action="{{ formAction }}" method="POST" novalidate data-form-devis data-merci="{{ '/merci/' | url }}" {% if not site.formspreeId %}data-formspree-missing{% endif %}>
+  <h2 class="visually-hidden">Demande de devis</h2>
+  <div class="js-only">
+    <div class="progress" aria-hidden="true"><span class="is-current"></span><span></span><span></span></div>
+    <p class="progress__label" aria-live="polite" data-progress-label>Étape 1 sur 3</p>
+  </div>
+
+  <!-- Honeypot anti-spam : champ invisible, doit rester vide -->
+  <div class="hp" aria-hidden="true"><label>Ne pas remplir ce champ <input type="text" name="site_web" tabindex="-1" autocomplete="off"></label></div>
+  <input type="hidden" name="_subject" value="Nouvelle demande de devis — site web">
+  <input type="hidden" name="_language" value="fr">
+  <input type="hidden" name="_next" value="{{ site.url }}{{ '/merci/' | url }}">
+
+  {#- ÉCRAN 1 -#}
+  <fieldset class="form-devis__step" data-step="1">
+    <legend class="visually-hidden">Étape 1 sur 3 : votre besoin</legend>
+    <h3>De quoi avez-vous besoin ?</h3>
+    <div class="field" data-field>
+      <div class="choices" role="radiogroup" aria-label="Type de besoin">
+        {%- for s in services %}
+        <div class="choice">
+          <input type="radio" id="besoin-{{ s.slug }}" name="besoin" value="{{ s.name }}" required {% if preselect == s.slug %}checked{% endif %}>
+          <label for="besoin-{{ s.slug }}">
+            <svg class="icon" aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg>
+            <span>{{ s.name }}<small>{{ s.short }}</small></span>
+          </label>
+        </div>
+        {%- endfor %}
+        <div class="choice">
+          <input type="radio" id="besoin-autre" name="besoin" value="Autre">
+          <label for="besoin-autre">
+            <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>
+            <span>Autre<small>Je vous explique dans le message</small></span>
+          </label>
+        </div>
+      </div>
+      <p class="field__error" id="err-besoin"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Choisissez un type de besoin.</p>
+    </div>
+    <div class="form-devis__nav js-only">
+      <span></span>
+      <button class="btn btn--primary" type="button" data-next>Continuer <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+  </fieldset>
+
+  {#- ÉCRAN 2 -#}
+  <fieldset class="form-devis__step" data-step="2" hidden>
+    <legend class="visually-hidden">Étape 2 sur 3 : votre commune et l'urgence</legend>
+    <h3>Où et quand ?</h3>
+    <div class="field" data-field>
+      <label for="commune">Votre commune</label>
+      <input type="text" id="commune" name="commune" list="communes" autocomplete="address-level2" required aria-describedby="hint-commune err-commune">
+      <datalist id="communes">
+        {%- for z in zones %}<option value="{{ z.city }}">{% endfor %}
+        {%- for z in zones %}{% for n in z.neighbors %}<option value="{{ n }}">{% endfor %}{% endfor %}
+      </datalist>
+      <p class="hint" id="hint-commune">J'interviens dans un rayon d'environ {{ site.radiusKm }} km autour de {{ site.hub }}.</p>
+      <p class="field__error" id="err-commune"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Indiquez votre commune.</p>
+    </div>
+    <div class="field" data-field>
+      <fieldset>
+        <legend>C'est urgent ?</legend>
+        <div class="choices choices--3" style="margin-top:var(--sp-3)">
+          <div class="choice">
+            <input type="radio" id="urgence-oui" name="urgence" value="Urgent" required>
+            <label for="urgence-oui"><span>Urgent<small>Fuite, plus d'eau chaude</small></span></label>
+          </div>
+          <div class="choice">
+            <input type="radio" id="urgence-semaine" name="urgence" value="Dans la semaine">
+            <label for="urgence-semaine"><span>Dans la semaine<small>Ça peut attendre un peu</small></span></label>
+          </div>
+          <div class="choice">
+            <input type="radio" id="urgence-projet" name="urgence" value="Projet à planifier">
+            <label for="urgence-projet"><span>Projet à planifier<small>Salle de bain, cuisine…</small></span></label>
+          </div>
+        </div>
+      </fieldset>
+      <p class="field__error" id="err-urgence"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Indiquez le niveau d'urgence.</p>
+    </div>
+    <div class="form-devis__nav js-only">
+      <button class="btn btn--link" type="button" data-prev><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Retour</button>
+      <button class="btn btn--primary" type="button" data-next>Continuer <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+  </fieldset>
+
+  {#- ÉCRAN 3 -#}
+  <fieldset class="form-devis__step" data-step="3" hidden>
+    <legend class="visually-hidden">Étape 3 sur 3 : vos coordonnées</legend>
+    <h3>Vos coordonnées</h3>
+    <div class="field" data-field>
+      <label for="nom">Votre nom</label>
+      <input type="text" id="nom" name="nom" autocomplete="name" required aria-describedby="err-nom">
+      <p class="field__error" id="err-nom"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Indiquez votre nom.</p>
+    </div>
+    <div class="field" data-field>
+      <label for="telephone">Votre téléphone</label>
+      <input type="tel" id="telephone" name="telephone" inputmode="tel" autocomplete="tel" required pattern="^(\+33|0)[1-9](?:[ .-]?\d{2}){4}$" aria-describedby="hint-tel err-telephone">
+      <p class="hint" id="hint-tel">Pour vous rappeler et convenir d'un créneau.</p>
+      <p class="field__error" id="err-telephone"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Indiquez un numéro de téléphone valide (10 chiffres).</p>
+    </div>
+    <div class="field" data-field>
+      <label for="email">Votre email <span class="muted">(facultatif)</span></label>
+      <input type="email" id="email" name="email" autocomplete="email" aria-describedby="err-email">
+      <p class="field__error" id="err-email"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Cette adresse email ne semble pas valide.</p>
+    </div>
+    <div class="field" data-field>
+      <label for="message">Décrivez votre besoin <span class="muted">(facultatif)</span></label>
+      <textarea id="message" name="message" rows="4" placeholder="Ex. : fuite sous l'évier de la cuisine depuis hier, j'ai coupé l'eau."></textarea>
+    </div>
+    <div class="field" data-field>
+      <label class="check">
+        <input type="checkbox" id="consentement" name="consentement" value="oui" required aria-describedby="err-consentement">
+        <span>J'accepte que mes informations soient utilisées pour être recontacté au sujet de ma demande. Elles ne sont ni revendues ni utilisées à d'autres fins. <a href="{{ '/mentions-legales/' | url }}#confidentialite">Politique de confidentialité</a>.</span>
+      </label>
+      <p class="field__error" id="err-consentement"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Votre accord est nécessaire pour envoyer la demande.</p>
+    </div>
+    {%- if not site.formspreeId %}
+    <p class="note note--warn small"><strong>Mode maquette :</strong> l'envoi est désactivé tant que l'identifiant Formspree n'est pas renseigné <mark class="todo">{{ site.placeholders.formspree }}</mark>. En attendant, la validation du formulaire redirige vers la page de confirmation.</p>
+    {%- endif %}
+    <div class="form-devis__nav">
+      <button class="btn btn--link js-only" type="button" data-prev><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Retour</button>
+      <button class="btn btn--primary" type="submit" data-submit>Envoyer ma demande <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+  </fieldset>
+  <p class="form-devis__status" role="alert" data-status></p>
+</form>

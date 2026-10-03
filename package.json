@@ -1,0 +1,21 @@
+{
+  "name": "fremont-plomberie-services",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine de Frémont Plomberie Services — Eleventy, HTML/CSS/JS statique",
+  "scripts": {
+    "dev": "SITE_MODE=demo eleventy --serve",
+    "build": "eleventy",
+    "build:demo": "SITE_MODE=demo eleventy",
+    "build:prod": "SITE_MODE=prod eleventy",
+    "clean": "rm -rf _site",
+    "lighthouse": "node scripts/lighthouse.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.30.1",
+    "terser": "^5.43.1"
+  }
+}

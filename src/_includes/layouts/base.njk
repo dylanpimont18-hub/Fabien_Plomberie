@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.className=document.documentElement.className.replace('no-js','js');</script>
+  {%- set pageTitle = title or site.tagline -%}
+  {%- set fullTitle = (pageTitle + " · " + site.shortName) if page.url != "/" else (site.tagline + " · " + site.name) -%}
+  {%- set canonical = site.url + (page.url | url) -%}
+  {%- set desc = description or ("Fabien Frémont, artisan plombier à Vignoux-sur-Barangeon, intervient dans un rayon de 50 km autour de Vierzon : dépannage, chauffe-eau, salle de bain, chauffage, cuisine. Devis gratuit.") -%}
+  <title>{{ fullTitle }}</title>
+  <meta name="description" content="{{ desc }}">
+  {%- if site.isDemo or noindex %}
+  <meta name="robots" content="noindex, nofollow">
+  {%- else %}
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  {%- endif %}
+  <link rel="canonical" href="{{ canonical }}">
+  <meta name="theme-color" content="#0E1A2B">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | url }}">
+  <link rel="manifest" href="{{ '/manifest.webmanifest' | url }}">
+  <link rel="preload" href="{{ '/assets/fonts/fraunces-latin.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/inter-latin.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+  {#- Open Graph / Twitter #}
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta property="og:title" content="{{ fullTitle }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ site.url }}{{ '/assets/img/og-image.png' | url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ site.name }} — {{ site.tagline }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ fullTitle }}">
+  <meta name="twitter:description" content="{{ desc }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ '/assets/img/og-image.png' | url }}">
+  {#- CSS critique : la feuille complète est inlinée (≈ 30 ko minifiés), aucune requête bloquante #}
+  <style>{% inlineCss %}</style>
+  {#- JSON-LD #}
+  {% include "partials/jsonld.njk" %}
+  {#- Mesure d'audience sans cookie — [À COMPLÉTER] #}
+  {%- if site.analytics.provider == "plausible" and site.analytics.plausibleDomain %}
+  <script defer data-domain="{{ site.analytics.plausibleDomain }}" src="https://plausible.io/js/script.tagged-events.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function(){(window.plausible.q = window.plausible.q || []).push(arguments)}</script>
+  {%- elif site.analytics.provider == "umami" and site.analytics.umamiSrc %}
+  <script defer src="{{ site.analytics.umamiSrc }}" data-website-id="{{ site.analytics.umamiWebsiteId }}"></script>
+  {%- else %}
+  <!-- Statistiques sans cookie : emplacement réservé (Plausible ou Umami) — [À COMPLÉTER dans src/_data/site.js → analytics] -->
+  {%- endif %}
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  {% include "partials/icons.njk" %}
+  {% if site.isDemo %}{% include "partials/demo-banner.njk" %}{% endif %}
+  {% include "partials/header.njk" %}
+  <main id="contenu" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  {% include "partials/mobile-bar.njk" %}
+  <script src="{{ '/assets/js/main.js' | url }}" defer></script>
+</body>
+</html>

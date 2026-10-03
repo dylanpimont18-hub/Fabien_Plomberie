@@ -1,0 +1,88 @@
+{#- ========= JSON-LD : Plumber (LocalBusiness) sur toutes les pages + schémas de page ========= -#}
+{%- set base = site.url -%}
+{%- if page.url == "/" %}{% set faqItems = faq %}{% elif service %}{% set faqItems = service.faq %}{% elif zone %}{% set faqItems = zone.faq %}{% endif -%}
+{%- if article and not breadcrumb %}{% set breadcrumb = [{ name: "Conseils", url: "/conseils/" }, { name: (h1 or title), url: page.url }] %}{% endif -%}
+{%- set offers = [] -%}
+{%- for s in services -%}
+  {%- set offers = (offers.push({ "@type": "Offer", "itemOffered": { "@type": "Service", "name": s.name, "serviceType": s.serviceType, "url": base + (("/services/" + s.slug + "/") | url) } }), offers) -%}
+{%- endfor -%}
+{%- set areas = [] -%}
+{%- for z in zones -%}{%- set areas = (areas.push({ "@type": "City", "name": z.city, "postalCode": z.postalCode }), areas) -%}{%- endfor -%}
+{%- set business = {
+  "@type": "Plumber",
+  "@id": base + ("/" | url) + "#business",
+  "name": site.name,
+  "alternateName": site.shortName,
+  "url": base + ("/" | url),
+  "logo": base + ("/assets/img/logo-512.png" | url),
+  "image": base + ("/assets/img/og-image.png" | url),
+  "telephone": site.phoneIntl,
+  "email": site.email,
+  "description": "Artisan plombier à Vignoux-sur-Barangeon (Cher). Dépannage plomberie, chauffe-eau, rénovation de salle de bain, chauffage et climatisation, plomberie de cuisine, dans un rayon de 50 km autour de Vierzon.",
+  "priceRange": "Devis gratuit",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.address.street,
+    "postalCode": site.address.postalCode,
+    "addressLocality": site.address.city,
+    "addressRegion": site.address.region,
+    "addressCountry": site.address.country
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": site.geo.lat, "longitude": site.geo.lng },
+  "areaServed": areas.concat([{ "@type": "GeoCircle", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 47.2225, "longitude": 2.0694, "name": "Vierzon" }, "geoRadius": "50000" }]),
+  "founder": { "@type": "Person", "name": site.owner, "jobTitle": "Artisan plombier" },
+  "foundingDate": site.founded,
+  "identifier": { "@type": "PropertyValue", "propertyID": "SIREN", "value": site.sirenCompact },
+  "openingHoursSpecification": (site.hours or [{ "@type": "OpeningHoursSpecification", "description": "[À COMPLÉTER : horaires d'ouverture]" }]),
+  "knowsAbout": ["Dépannage plomberie", "Chauffe-eau", "Rénovation de salle de bain", "Chauffage", "Climatisation", "Plomberie de cuisine"],
+  "makesOffer": offers
+} -%}
+{%- set graph = [business] -%}
+{#- WebSite -#}
+{%- set graph = (graph.push({ "@type": "WebSite", "@id": base + ("/" | url) + "#website", "url": base + ("/" | url), "name": site.name, "inLanguage": "fr-FR", "publisher": { "@id": base + ("/" | url) + "#business" } }), graph) -%}
+{#- Breadcrumb -#}
+{%- if breadcrumb -%}
+  {%- set items = [] -%}
+  {%- set items = (items.push({ "@type": "ListItem", "position": 1, "name": "Accueil", "item": base + ("/" | url) }), items) -%}
+  {%- for b in breadcrumb -%}
+    {%- set items = (items.push({ "@type": "ListItem", "position": loop.index + 1, "name": b.name, "item": base + (b.url | url) }), items) -%}
+  {%- endfor -%}
+  {%- set graph = (graph.push({ "@type": "BreadcrumbList", "itemListElement": items }), graph) -%}
+{%- endif -%}
+{#- FAQPage -#}
+{%- if faqItems -%}
+  {%- set qa = [] -%}
+  {%- for f in faqItems -%}{%- set qa = (qa.push({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }), qa) -%}{%- endfor -%}
+  {%- set graph = (graph.push({ "@type": "FAQPage", "mainEntity": qa }), graph) -%}
+{%- endif -%}
+{#- Service -#}
+{%- if service -%}
+  {%- set graph = (graph.push({
+    "@type": "Service",
+    "@id": base + (page.url | url) + "#service",
+    "name": service.name,
+    "serviceType": service.serviceType,
+    "description": service.metaDescription,
+    "url": base + (page.url | url),
+    "provider": { "@id": base + ("/" | url) + "#business" },
+    "areaServed": areas,
+    "offers": { "@type": "Offer", "description": "Devis gratuit", "availability": "https://schema.org/InStock" }
+  }), graph) -%}
+{%- endif -%}
+{#- Article -#}
+{%- if article -%}
+  {%- set graph = (graph.push({
+    "@type": "Article",
+    "@id": base + (page.url | url) + "#article",
+    "headline": (h1 or title),
+    "description": description,
+    "inLanguage": "fr-FR",
+    "datePublished": page.date | isoDate,
+    "dateModified": (updated or page.date) | isoDate,
+    "author": { "@type": "Person", "name": site.owner, "jobTitle": "Artisan plombier" },
+    "publisher": { "@id": base + ("/" | url) + "#business" },
+    "image": base + ("/assets/img/og-image.png" | url),
+    "mainEntityOfPage": base + (page.url | url)
+  }), graph) -%}
+{%- endif -%}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@graph": graph } | jsonld | safe }}</script>

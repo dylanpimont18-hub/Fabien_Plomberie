@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+title: "À propos de Fabien Frémont, artisan plombier"
+description: "Sept ans comme plombier salarié, puis la création de Frémont Plomberie Services en juillet 2024 à Vignoux-sur-Barangeon : le parcours et les valeurs de Fabien."
+permalink: /a-propos/
+breadcrumb:
+  - name: "À propos"
+    url: "/a-propos/"
+---
+<div class="container page-head page-head--split">
+  <div>
+    {% include "partials/breadcrumb.njk" %}
+    <p class="eyebrow">À propos</p>
+    <h1>Un plombier, un camion, et l'envie de bien faire</h1>
+    <p class="lead">Je m'appelle Fabien Frémont. J'ai créé Frémont Plomberie Services en juillet 2024, à Vignoux-sur-Barangeon, après sept années passées comme plombier salarié.</p>
+  </div>
+  <div class="portrait__visual reveal">
+    <div class="ph ph--4-5" role="img" aria-label="Portrait de Fabien Frémont à fournir"><span class="ph__label">Portrait à fournir</span></div>
+    <div class="portrait__caption"><strong>Fabien Frémont</strong>Gérant, {{ site.name }}</div>
+  </div>
+</div>
+
+<section class="container section" style="padding-top:0">
+  <div class="service-layout">
+    <div class="prose">
+      <h2>Sept ans à apprendre, avant de signer de mon nom</h2>
+      <p>On ne devient pas un bon plombier en sortant de formation. On le devient en passant par toutes les situations : la fuite introuvable, le chauffe-eau coincé dans un placard trop petit, la salle de bain d'une maison ancienne où rien n'est droit. Pendant sept ans, salarié, j'ai accumulé ces situations. J'ai vu ce qui tient dans le temps et ce qui ne tient pas. J'ai vu aussi ce que les clients retiennent d'une intervention : pas la technique, mais le respect de leur maison et la clarté des explications.</p>
+      <p><mark class="todo">[À COMPLÉTER : formation initiale, type d'entreprise et de chantiers pendant les 7 années salariées, ce qui a déclenché l'envie de s'installer]</mark></p>
+
+      <h2>Juillet 2024 : Frémont Plomberie Services</h2>
+      <p>J'ai choisi de m'installer à mon compte, en entreprise individuelle, à Vignoux-sur-Barangeon, là où je vis. Une structure simple : moi, mon outillage, mon véhicule, et un rayon d'une cinquantaine de kilomètres autour de Vierzon, de la Sologne jusqu'à Bourges.</p>
+      <p>Être seul dans l'entreprise, c'est une responsabilité, mais c'est surtout une promesse pour vous : la personne qui répond au téléphone, celle qui fait le devis et celle qui intervient sont la même. Pas de commercial, pas de sous-traitant, pas de surprise.</p>
+
+      <h2>Ce à quoi je tiens</h2>
+      <dl>
+        <dt>Écoute</dt><dd>Je commence par vous laisser décrire le problème ou le projet, et je pose des questions avant de proposer quoi que ce soit.</dd>
+        <dt>Réactivité</dt><dd>Je réponds au téléphone, je rappelle quand je l'ai dit, et je donne des délais que je peux tenir.</dd>
+        <dt>Travail soigné</dt><dd>Des raccordements alignés, des fixations propres, un chantier nettoyé. Ce qu'on ne voit pas doit être aussi bien fait que ce qu'on voit.</dd>
+        <dt>Honnêteté</dt><dd>Si une réparation ne vaut pas le coup, je vous le dis. Si un remplacement peut attendre, je vous le dis aussi.</dd>
+        <dt>Proximité</dt><dd>Je travaille là où je vis. Mes clients sont mes voisins, et j'aimerais le rester.</dd>
+        <dt>Solutions durables</dt><dd>Je préfère une installation qui dure vingt ans à une rustine qu'il faudra refaire.</dd>
+      </dl>
+
+      <h2>Mon premier avis</h2>
+      <p>{{ site.review.paraphrase }} C'est exactement le genre de retour qui me fait avancer : un travail simple, bien fait, par une journée difficile.</p>
+
+      <h2>Mon logo</h2>
+      <div class="grid grid--2" style="align-items:center">
+        <figure>
+          <img src="{{ '/assets/img/logo-original.png' | url }}" alt="Logo actuel de Frémont Plomberie Services" width="600" height="400" loading="lazy" style="border-radius:var(--r-md);border:var(--bd)">
+          <figcaption class="small muted" style="margin-top:var(--sp-2)">Logo actuel <mark class="todo">[À COMPLÉTER : fichier haute définition]</mark></figcaption>
+        </figure>
+        <figure style="padding:var(--sp-5);background:var(--bg-2);border-radius:var(--r-md)">
+          <div class="logo" style="color:var(--c-nuit)">{% set logoId = "logo-about" %}{% include "partials/logo.njk" %}</div>
+          <figcaption class="small muted" style="margin-top:var(--sp-4)">Logotype proposé avec ce site : un « F » en raccord de cuivre, et une goutte.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <aside aria-label="En bref">
+      <div class="aside-card">
+        <h2>En bref</h2>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>{{ site.name }}, {{ site.legalForm }}</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Créée en {{ site.foundedLabel }}</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>{{ site.experienceYears }} ans d'expérience comme plombier salarié</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Basé à {{ site.address.city }} ({{ site.address.postalCode }})</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Rayon de {{ site.radiusKm }} km autour de {{ site.hub }}</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>SIREN {{ site.siren }}</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><mark class="todo">{{ site.placeholders.decennale }}</mark></span></li>
+        </ul>
+      </div>
+      <div class="aside-card aside-card--nuit on-dark">
+        <h2>Me contacter</h2>
+        <p>Par téléphone ou par le formulaire de devis.</p>
+        <a class="btn btn--primary btn--block" href="{{ site.phoneHref }}" data-track="call" data-track-where="about"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone }}</a>
+      </div>
+    </aside>
+  </div>
+</section>
+{% include "partials/cta.njk" %}

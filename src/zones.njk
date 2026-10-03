@@ -1,0 +1,16 @@
+---
+layout: layouts/zone.njk
+pagination:
+  data: zones
+  size: 1
+  alias: zone
+permalink: "/zones/{{ zone.slug }}/"
+eleventyComputed:
+  title: "{{ zone.title }}"
+  description: "{{ zone.metaDescription }}"
+  breadcrumb:
+    - name: "Zones d'intervention"
+      url: "/zones/plombier-vierzon/"
+    - name: "{{ zone.city }}"
+      url: "/zones/{{ zone.slug }}/"
+---

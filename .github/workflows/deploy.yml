@@ -1,0 +1,63 @@
+name: Déploiement GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      site_mode:
+        description: "Mode du site (demo = bandeau + noindex, prod = indexable)"
+        required: true
+        default: "demo"
+        type: choice
+        options: [demo, prod]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Configurer GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Construire le site
+        env:
+          # demo par défaut ; passer en prod via "Run workflow" ou en définissant la variable de dépôt SITE_MODE
+          SITE_MODE: ${{ github.event.inputs.site_mode || vars.SITE_MODE || 'demo' }}
+          # URL et préfixe calculés par configure-pages (fonctionne avec ou sans domaine personnalisé)
+          SITE_URL: ${{ steps.pages.outputs.origin }}${{ steps.pages.outputs.base_path }}
+          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

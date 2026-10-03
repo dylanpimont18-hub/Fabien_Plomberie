@@ -1,0 +1,14 @@
+{#- Attend : faqItems (tableau {q, a}), faqName (string, optionnel) -#}
+<div class="faq">
+  {%- for f in faqItems %}
+  <details class="faq__item" {% if faqName %}name="{{ faqName }}"{% endif %}>
+    <summary>
+      <span>{{ f.q }}</span>
+      <span class="faq__icon" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
+    </summary>
+    <div class="faq__wrap"><div>
+      <div class="faq__body"><p>{{ f.a | todo | safe }}</p></div>
+    </div></div>
+  </details>
+  {%- endfor %}
+</div>

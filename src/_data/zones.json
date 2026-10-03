@@ -1,0 +1,297 @@
+[
+  {
+    "slug": "plombier-vierzon",
+    "city": "Vierzon",
+    "postalCode": "18100",
+    "title": "Plombier à Vierzon (18100) : dépannage, chauffe-eau",
+    "metaDescription": "Artisan plombier à Vierzon : Fabien Frémont, basé à Vignoux-sur-Barangeon tout près, intervient pour vos dépannages, chauffe-eau et salles de bain. Devis gratuit.",
+    "h1": "Plombier à Vierzon",
+    "distanceLabel": "à une dizaine de kilomètres de mon atelier",
+    "lead": "Vierzon est la ville autour de laquelle j'organise mes tournées : depuis Vignoux-sur-Barangeon, j'y suis en un quart d'heure par la route de Bourges. Dépannage, chauffe-eau, salle de bain ou cuisine, j'interviens dans tous les quartiers de la ville.",
+    "context": [
+      "Vierzon, au confluent du Cher et de l'Yèvre, est une ville au passé industriel et ferroviaire. Son parc de logements mêle des maisons de ville en brique et pierre du centre et du quartier de la gare, des pavillons des années 1960 à 1980 dans les quartiers du Clos du Roy, de Bellon ou des Forges, et des immeubles collectifs. Chaque époque a ses habitudes de plomberie : canalisations en plomb ou en acier galvanisé dans les maisons anciennes, cuivre et PER dans les plus récentes, et des chauffe-eau souvent arrivés en fin de vie dans les pavillons des années 1980.",
+      "Dans les maisons anciennes du centre, les demandes portent surtout sur les fuites de canalisations vieillissantes, les chasses d'eau et les remplacements de robinetterie. Dans les pavillons, c'est le chauffe-eau et la salle de bain qu'on modernise, souvent pour remplacer une baignoire par une douche de plain-pied. Les copropriétés du centre me sollicitent pour des interventions ponctuelles dans les appartements."
+    ],
+    "neighbors": [
+      "Vignoux-sur-Barangeon",
+      "Foëcy",
+      "Méry-sur-Cher",
+      "Thénioux",
+      "Saint-Hilaire-de-Court",
+      "Bourges",
+      "Mehun-sur-Yèvre"
+    ],
+    "neighborsText": "Je couvre aussi les communes voisines de Vierzon : Méry-sur-Cher, Thénioux, Saint-Hilaire-de-Court, Saint-Georges-sur-la-Prée et Massay, ainsi que Foëcy et Mehun-sur-Yèvre le long de l'Yèvre.",
+    "topServices": [
+      "depannage-plomberie",
+      "chauffe-eau",
+      "renovation-salle-de-bain"
+    ],
+    "topServicesText": "À Vierzon, mes interventions les plus fréquentes sont le dépannage de fuites dans les maisons anciennes, le remplacement de chauffe-eau dans les pavillons et la transformation de baignoires en douches.",
+    "faq": [
+      {
+        "q": "Combien de temps mettez-vous pour venir à Vierzon ?",
+        "a": "Depuis Vignoux-sur-Barangeon, je rejoins Vierzon en un quart d'heure environ par la route. Pour un dépannage, appelez-moi au 06 46 39 61 06 : je vous dis quand je peux passer en fonction de ma tournée."
+      },
+      {
+        "q": "Intervenez-vous dans les appartements du centre-ville de Vierzon ?",
+        "a": "Oui, en maison comme en appartement. Pour un immeuble, pensez à me préciser s'il faut couper l'eau de la colonne commune : je m'organise avec le syndic ou le gardien si besoin."
+      },
+      {
+        "q": "Ma maison vierzonnaise a encore des canalisations en plomb, que faire ?",
+        "a": "Le plomb ne se répare pas, il se remplace. Je peux remplacer un tronçon à l'occasion d'une fuite ou vous proposer une rénovation progressive, pièce par pièce, pour étaler les travaux."
+      }
+    ],
+    "map": {
+      "x": 300,
+      "y": 230,
+      "anchor": "end"
+    }
+  },
+  {
+    "slug": "plombier-bourges",
+    "city": "Bourges",
+    "postalCode": "18000",
+    "title": "Plombier à Bourges (18000) : dépannage, salle de bain",
+    "metaDescription": "Fabien Frémont, artisan plombier installé à Vignoux-sur-Barangeon, intervient à Bourges : dépannage, chauffe-eau, salle de bain, cuisine. Devis gratuit.",
+    "h1": "Plombier à Bourges",
+    "distanceLabel": "à une trentaine de kilomètres de mon atelier",
+    "lead": "Bourges est à la limite de ma zone d'intervention, à une trentaine de kilomètres par la route de Vierzon. J'y viens pour des interventions planifiées comme pour des dépannages, en regroupant mes déplacements pour rester réactif.",
+    "context": [
+      "Préfecture du Cher, Bourges est une ville d'art et d'histoire : autour de la cathédrale, le centre ancien aligne des maisons à pans de bois et des hôtels particuliers où la plomberie se glisse dans des murs épais et des planchers anciens. Les quartiers plus récents, de la Chancellerie à l'Aéroport ou à Asnières-lès-Bourges, sont faits de pavillons et de petits collectifs des années 1960 à 2000.",
+      "À Bourges, on me contacte souvent pour des chantiers qui demandent du soin et de l'anticipation : rénovation de salle de bain dans une maison ancienne, où il faut composer avec des évacuations existantes et des hauteurs de sol limitées, ou remplacement de chauffe-eau dans les pavillons. Je me déplace volontiers pour un devis sur place quand le projet le mérite."
+    ],
+    "neighbors": [
+      "Saint-Doulchard",
+      "Saint-Germain-du-Puy",
+      "Trouy",
+      "Le Subdray",
+      "La Chapelle-Saint-Ursin",
+      "Marmagne",
+      "Berry-Bouy",
+      "Mehun-sur-Yèvre"
+    ],
+    "neighborsText": "Autour de Bourges, j'interviens aussi à Saint-Doulchard, Berry-Bouy, Marmagne et La Chapelle-Saint-Ursin, situées sur ma route depuis Vierzon, et à Saint-Germain-du-Puy, Trouy et Le Subdray.",
+    "topServices": [
+      "renovation-salle-de-bain",
+      "chauffe-eau",
+      "plomberie-cuisine"
+    ],
+    "topServicesText": "À Bourges, je privilégie les interventions planifiées : rénovation de salle de bain, remplacement de chauffe-eau et plomberie de cuisine, que je peux organiser en une ou deux journées complètes sur place.",
+    "faq": [
+      {
+        "q": "Vous déplacez-vous à Bourges pour un simple dépannage ?",
+        "a": "Oui, mais Bourges est à la limite de mon rayon de 50 km autour de Vierzon : je vous donne un délai honnête selon ma tournée. Pour une fuite, je vous indique d'abord par téléphone comment couper l'eau et sécuriser."
+      },
+      {
+        "q": "Pouvez-vous faire un devis sur place à Bourges ?",
+        "a": "Oui pour les projets de salle de bain, de cuisine ou de chauffe-eau. Pour une petite intervention, des photos et une description précise me suffisent souvent pour chiffrer."
+      },
+      {
+        "q": "Travaillez-vous dans les maisons anciennes du centre de Bourges ?",
+        "a": "Oui. Ces maisons demandent de composer avec l'existant : passages de tuyaux limités, évacuations anciennes, planchers bois. Je prends le temps de regarder avant de proposer une solution."
+      }
+    ],
+    "map": {
+      "x": 560,
+      "y": 300,
+      "anchor": "start"
+    }
+  },
+  {
+    "slug": "plombier-mehun-sur-yevre",
+    "city": "Mehun-sur-Yèvre",
+    "postalCode": "18500",
+    "title": "Plombier à Mehun-sur-Yèvre (18500) : artisan voisin",
+    "metaDescription": "Artisan plombier à Mehun-sur-Yèvre : Fabien Frémont, installé dans la commune voisine, intervient vite pour vos fuites, chauffe-eau et salles de bain.",
+    "h1": "Plombier à Mehun-sur-Yèvre",
+    "distanceLabel": "à quelques minutes de mon atelier",
+    "lead": "Mehun-sur-Yèvre est ma voisine directe : Vignoux-sur-Barangeon et Mehun partagent le même code postal et quelques minutes de route. C'est la commune où je peux être le plus vite chez vous.",
+    "context": [
+      "Entre Vierzon et Bourges, sur l'Yèvre et le canal de Berry, Mehun-sur-Yèvre est connue pour son château ducal et son passé de cité de la porcelaine. Son habitat va des maisons de bourg en pierre, serrées autour de la collégiale, aux lotissements pavillonnaires construits depuis les années 1970 en direction de la route de Bourges et de Vignoux.",
+      "À Mehun, je fais beaucoup de petites interventions rapides, précisément parce que je suis à côté : une fuite, un ballon d'eau chaude qui lâche, un robinet à changer avant le week-end. C'est aussi la commune où je peux passer le plus facilement pour un devis en fin de journée."
+    ],
+    "neighbors": [
+      "Vignoux-sur-Barangeon",
+      "Foëcy",
+      "Allouis",
+      "Berry-Bouy",
+      "Marmagne",
+      "Sainte-Thorette",
+      "Quincy"
+    ],
+    "neighborsText": "Autour de Mehun-sur-Yèvre, je dessers Allouis, Berry-Bouy, Marmagne, Sainte-Thorette, Quincy, et bien sûr Foëcy et Vignoux-sur-Barangeon.",
+    "topServices": [
+      "depannage-plomberie",
+      "chauffe-eau",
+      "plomberie-cuisine"
+    ],
+    "topServicesText": "Proximité oblige, Mehun-sur-Yèvre est la commune où je fais le plus de dépannages rapides, de remplacements de chauffe-eau et de raccordements d'appareils de cuisine.",
+    "faq": [
+      {
+        "q": "Êtes-vous vraiment tout près de Mehun-sur-Yèvre ?",
+        "a": "Oui : mon atelier est à Vignoux-sur-Barangeon, la commune voisine, à quelques minutes de route du centre de Mehun."
+      },
+      {
+        "q": "Pouvez-vous passer en fin de journée pour un devis ?",
+        "a": "C'est souvent possible à Mehun-sur-Yèvre, justement parce que c'est sur mon chemin du retour. Appelez-moi pour convenir d'un créneau. [À COMPLÉTER : horaires]"
+      },
+      {
+        "q": "L'eau de Mehun est-elle calcaire ? Faut-il protéger mon chauffe-eau ?",
+        "a": "[À COMPLÉTER : constat de l'artisan sur la dureté de l'eau locale]. Dans tous les cas, un groupe de sécurité en bon état et une résistance stéatite limitent les effets du calcaire sur un chauffe-eau."
+      }
+    ],
+    "map": {
+      "x": 420,
+      "y": 262,
+      "anchor": "start"
+    }
+  },
+  {
+    "slug": "plombier-vignoux-sur-barangeon",
+    "city": "Vignoux-sur-Barangeon",
+    "postalCode": "18500",
+    "title": "Plombier à Vignoux-sur-Barangeon : artisan local",
+    "metaDescription": "Fabien Frémont est le plombier de Vignoux-sur-Barangeon : installé dans la commune, il intervient pour un dépannage, un chauffe-eau, une salle de bain ou une cuisine.",
+    "h1": "Plombier à Vignoux-sur-Barangeon",
+    "distanceLabel": "ma commune",
+    "lead": "Vignoux-sur-Barangeon, c'est chez moi. J'y ai installé Frémont Plomberie Services en juillet 2024, et c'est de là que je pars chaque matin. Pour mes voisins, c'est la garantie d'un artisan qui connaît les maisons du coin et qui est joignable.",
+    "context": [
+      "Vignoux-sur-Barangeon est une commune de la lisière sud de la Sologne, entre la forêt, les étangs et la vallée de l'Yèvre, à mi-chemin de Vierzon et de Mehun-sur-Yèvre. On y trouve des maisons de bourg, des longères et des fermes rénovées, et des lotissements plus récents. Beaucoup de maisons sont en assainissement individuel et disposent d'un puits ou d'un forage : la plomberie y a ses particularités, du surpresseur au filtre.",
+      "Dans la commune, je suis sollicité pour tout ce que fait un plombier de village : une fuite, un chauffe-eau, une salle de bain à moderniser, un lave-linge à raccorder dans une dépendance. Et comme je suis sur place, je peux passer voir un problème rapidement, parfois le jour même."
+    ],
+    "neighbors": [
+      "Mehun-sur-Yèvre",
+      "Foëcy",
+      "Neuvy-sur-Barangeon",
+      "Vouzeron",
+      "Allouis",
+      "Vierzon",
+      "Saint-Laurent"
+    ],
+    "neighborsText": "Depuis Vignoux, je rayonne naturellement vers Mehun-sur-Yèvre, Foëcy, Neuvy-sur-Barangeon, Vouzeron, Allouis et Saint-Laurent, et vers Vierzon.",
+    "topServices": [
+      "depannage-plomberie",
+      "renovation-salle-de-bain",
+      "chauffe-eau"
+    ],
+    "topServicesText": "Dans ma commune, je fais aussi bien du dépannage que des rénovations de salle de bain dans les longères et des remplacements de chauffe-eau.",
+    "faq": [
+      {
+        "q": "Vous pouvez venir le jour même à Vignoux-sur-Barangeon ?",
+        "a": "Quand ma tournée le permet, oui : je suis sur place. Appelez-moi au 06 46 39 61 06 et je vous dis tout de suite ce qui est possible."
+      },
+      {
+        "q": "Intervenez-vous sur les installations avec puits ou forage ?",
+        "a": "[À COMPLÉTER : prise en charge des surpresseurs, filtres et raccordements sur puits]. Ces installations sont fréquentes dans la commune."
+      },
+      {
+        "q": "Peut-on passer vous voir à l'atelier ?",
+        "a": "Je travaille chez mes clients, pas en boutique : le plus simple est de m'appeler ou de remplir le formulaire de devis. Mon adresse figure dans les mentions légales."
+      }
+    ],
+    "map": {
+      "x": 372,
+      "y": 214,
+      "anchor": "start",
+      "home": true
+    }
+  },
+  {
+    "slug": "plombier-foecy",
+    "city": "Foëcy",
+    "postalCode": "18500",
+    "title": "Plombier à Foëcy (18500) : dépannage, cuisine",
+    "metaDescription": "Artisan plombier à Foëcy : Fabien Frémont, basé à quelques kilomètres, intervient pour vos fuites, chauffe-eau, cuisines et salles de bain. Devis gratuit.",
+    "h1": "Plombier à Foëcy",
+    "distanceLabel": "à quelques kilomètres de mon atelier",
+    "lead": "Foëcy est sur ma route entre Vignoux-sur-Barangeon et Vierzon : j'y passe presque tous les jours. C'est une commune où je peux intervenir vite, pour un dépannage comme pour un projet.",
+    "context": [
+      "Foëcy s'étire le long du Cher et de la voie ferrée, entre Vierzon et Mehun-sur-Yèvre. Comme Mehun, la commune a une histoire liée à la porcelaine. Son habitat est un mélange de maisons de bourg, de pavillons et de maisons avec jardin, dont beaucoup ont été construites ou agrandies dans les années 1970 à 1990 : une génération de salles de bain et de chauffe-eau qui arrive aujourd'hui à l'âge du renouvellement.",
+      "À Foëcy, les demandes sont très variées : raccordement d'un lave-vaisselle dans une cuisine neuve, remplacement d'un cumulus, transformation d'une baignoire en douche pour une personne qui vieillit chez elle. Je vois aussi des maisons proches du Cher où l'on préfère sécuriser les installations du sous-sol."
+    ],
+    "neighbors": [
+      "Vierzon",
+      "Vignoux-sur-Barangeon",
+      "Mehun-sur-Yèvre",
+      "Allouis",
+      "Méry-sur-Cher",
+      "Brinay"
+    ],
+    "neighborsText": "Autour de Foëcy, je dessers Vierzon, Vignoux-sur-Barangeon, Mehun-sur-Yèvre, Allouis, Méry-sur-Cher et Brinay.",
+    "topServices": [
+      "plomberie-cuisine",
+      "chauffe-eau",
+      "depannage-plomberie"
+    ],
+    "topServicesText": "À Foëcy, je suis souvent appelé pour la plomberie de cuisine, le remplacement de chauffe-eau et les dépannages de fuite.",
+    "faq": [
+      {
+        "q": "À quelle vitesse pouvez-vous être à Foëcy ?",
+        "a": "Foëcy est à quelques kilomètres de mon atelier, sur ma route quotidienne vers Vierzon. Pour un dépannage, je peux souvent m'y arrêter dans la journée."
+      },
+      {
+        "q": "Raccordez-vous les appareils d'une cuisine posée par un cuisiniste ?",
+        "a": "Oui, c'est l'une de mes interventions les plus courantes : préparation des arrivées avant la pose, puis raccordement du lave-vaisselle, de l'évier et du mitigeur une fois les meubles installés."
+      },
+      {
+        "q": "Ma cave est humide, pouvez-vous déplacer mon chauffe-eau ?",
+        "a": "C'est possible dans beaucoup de maisons. Je regarde l'emplacement, la longueur des canalisations et l'alimentation électrique avant de vous proposer une solution sur devis."
+      }
+    ],
+    "map": {
+      "x": 350,
+      "y": 246,
+      "anchor": "end"
+    }
+  },
+  {
+    "slug": "plombier-neuvy-sur-barangeon",
+    "city": "Neuvy-sur-Barangeon",
+    "postalCode": "18330",
+    "title": "Plombier à Neuvy-sur-Barangeon : artisan en Sologne",
+    "metaDescription": "Fabien Frémont, artisan plombier à Vignoux-sur-Barangeon, intervient à Neuvy-sur-Barangeon et en Sologne : dépannage, chauffe-eau, chauffage, salle de bain.",
+    "h1": "Plombier à Neuvy-sur-Barangeon",
+    "distanceLabel": "à une quinzaine de kilomètres de mon atelier",
+    "lead": "Neuvy-sur-Barangeon est un peu plus haut sur le Barangeon, en pleine Sologne. Les maisons y sont plus dispersées, souvent des longères, des maisons de garde ou des pavillons isolés : je m'y rends pour des interventions qu'il vaut mieux bien préparer.",
+    "context": [
+      "Neuvy-sur-Barangeon est une commune de Sologne, entourée de forêts et d'étangs, sur la route de Vierzon à Aubigny-sur-Nère. L'habitat y est plus dispersé qu'en vallée de l'Yèvre : fermes et longères rénovées, maisons de garde-chasse, résidences secondaires et pavillons en hameaux. Beaucoup de maisons sont en assainissement individuel, alimentées par un puits ou un forage, et chauffées au bois, au fioul ou à l'électricité.",
+      "C'est un territoire où l'on fait durer les choses, et où une panne d'eau chaude ou de chauffage se ressent vite en hiver. Mes interventions à Neuvy concernent souvent les chauffe-eau, le chauffage, et la remise en état de la plomberie de résidences secondaires qui ont passé l'hiver fermées."
+    ],
+    "neighbors": [
+      "Vignoux-sur-Barangeon",
+      "Vouzeron",
+      "Nançay",
+      "Saint-Laurent",
+      "Allogny",
+      "Méry-ès-Bois",
+      "Vierzon"
+    ],
+    "neighborsText": "Autour de Neuvy-sur-Barangeon, j'interviens à Vouzeron, Nançay, Saint-Laurent, Allogny et Méry-ès-Bois, en plus de Vignoux-sur-Barangeon et de Vierzon.",
+    "topServices": [
+      "chauffe-eau",
+      "chauffage-climatisation",
+      "depannage-plomberie"
+    ],
+    "topServicesText": "En Sologne, mes interventions les plus utiles sont le chauffe-eau, le chauffage et les dépannages de plomberie dans des maisons souvent isolées.",
+    "faq": [
+      {
+        "q": "Vous déplacez-vous dans les hameaux isolés de Neuvy-sur-Barangeon ?",
+        "a": "Oui. Donnez-moi simplement un repère précis ou vos coordonnées GPS : les hameaux solognots ne sont pas toujours bien indiqués."
+      },
+      {
+        "q": "Ma résidence secondaire a gelé cet hiver, pouvez-vous remettre l'installation en état ?",
+        "a": "Oui : je vérifie les canalisations, le chauffe-eau et les robinets, je remplace ce qui a éclaté et je vous conseille sur la vidange avant l'hiver suivant."
+      },
+      {
+        "q": "Travaillez-vous sur les installations avec puits ou forage ?",
+        "a": "[À COMPLÉTER : prise en charge des surpresseurs, filtres et raccordements sur puits], très fréquents dans les communes de Sologne."
+      }
+    ],
+    "map": {
+      "x": 420,
+      "y": 150,
+      "anchor": "start"
+    }
+  }
+]

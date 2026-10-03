@@ -1,0 +1,45 @@
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="{{ '/' | url }}" aria-label="{{ site.name }}, retour à l'accueil">
+          {% set logoId = "logo-footer" %}{% include "partials/logo.njk" %}
+        </a>
+        {#- NAP : identique au caractère près sur toutes les pages et dans le JSON-LD -#}
+        <address itemscope itemtype="https://schema.org/Plumber">
+          <strong itemprop="name">{{ site.name }}</strong>
+          <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="postalCode">{{ site.address.postalCode }}</span> <span itemprop="addressLocality">{{ site.address.city }}</span></span>
+          <a href="{{ site.phoneHref }}" itemprop="telephone" data-track="call" data-track-where="footer">{{ site.phone }}</a>
+          {%- if site.email %}<a href="mailto:{{ site.email }}" itemprop="email">{{ site.email }}</a>{% else %}<mark class="todo">{{ site.placeholders.email }}</mark>{% endif %}
+          <span>Intervention dans un rayon de {{ site.radiusKm }} km autour de {{ site.hub }}</span>
+          {%- if site.hours %}<span>{{ site.hours }}</span>{% else %}<mark class="todo">{{ site.placeholders.hours }}</mark>{% endif %}
+        </address>
+      </div>
+      <nav aria-label="Services (pied de page)">
+        <h2>Services</h2>
+        <ul>
+          {%- for s in services %}<li><a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name }}</a></li>{% endfor %}
+        </ul>
+      </nav>
+      <nav aria-label="Zones d'intervention (pied de page)">
+        <h2>Zones d'intervention</h2>
+        <ul>
+          {%- for z in zones %}<li><a href="{{ ('/zones/' + z.slug + '/') | url }}">Plombier à {{ z.city }}</a></li>{% endfor %}
+        </ul>
+      </nav>
+      <nav aria-label="Informations (pied de page)">
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="{{ '/a-propos/' | url }}">À propos de Fabien</a></li>
+          <li><a href="{{ '/conseils/' | url }}">Conseils</a></li>
+          <li><a href="{{ '/contact/' | url }}">Contact et devis</a></li>
+          <li><a href="{{ '/mentions-legales/' | url }}">Mentions légales et confidentialité</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© {{ year }} {{ site.name }} · {{ site.legalForm }} · SIREN {{ site.siren }}</p>
+      <p>Site réalisé par {% if site.madeBy.url %}<a href="{{ site.madeBy.url }}" rel="noopener">{{ site.madeBy.name }}</a>{% else %}<mark class="todo">{{ site.madeBy.name }}</mark>{% endif %}</p>
+    </div>
+  </div>
+</footer>

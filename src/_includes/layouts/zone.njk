@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+---
+{%- set faqItems = zone.faq -%}
+<div class="container page-head page-head--split">
+  <div>
+    {% include "partials/breadcrumb.njk" %}
+    <p class="eyebrow">Zone d'intervention · {{ zone.distanceLabel }}</p>
+    <h1>{{ zone.h1 }}</h1>
+    <p class="lead">{{ zone.lead }}</p>
+    <div class="hero__actions" style="margin-top:var(--sp-6)">
+      <a class="btn btn--primary" href="{{ site.phoneHref }}" data-track="call" data-track-where="zone-head"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone }}</a>
+      <a class="btn btn--secondary" href="{{ '/contact/' | url }}?commune={{ zone.city | urlencode }}#devis">Demander un devis</a>
+    </div>
+  </div>
+  <div class="ph ph--3-2 reveal" role="img" aria-label="Photo de chantier à fournir à {{ zone.city }}"><span class="ph__label">Photo chantier à fournir · {{ zone.city }}</span></div>
+</div>
+
+<div class="container section" style="padding-top:0">
+  <div class="service-layout">
+    <article class="prose">
+      <h2>Un plombier qui connaît {{ zone.city }}</h2>
+      {%- for p in zone.context %}<p>{{ p }}</p>{% endfor %}
+
+      <h2>Mes services à {{ zone.city }}</h2>
+      <p>{{ zone.topServicesText }}</p>
+      <div class="zone-grid" style="margin-top:var(--sp-5)">
+        {%- for slug in zone.topServices %}{% set s = services | find("slug", slug) %}
+        <a class="card" href="{{ ('/services/' + s.slug + '/') | url }}">
+          <svg class="icon icon--lg icon--accent" aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg>
+          <h3>{{ s.name }} à {{ zone.city }}</h3>
+          <p>{{ s.short }}</p>
+          <span class="card__more">Voir le service <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        {%- endfor %}
+      </div>
+      <p style="margin-top:var(--sp-5)">Et bien sûr tous mes autres services :
+        {%- for s in services %}{% if slug not in zone.topServices and not (zone.topServices.includes(s.slug)) %} <a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name | lower }}</a>{{ "," if not loop.last else "." }}{% endif %}{% endfor %}
+      </p>
+
+      <h2>Communes voisines desservies</h2>
+      <p>{{ zone.neighborsText }}</p>
+      <ul class="map__list" aria-label="Autres pages de zones">
+        {%- for z in zones %}{% if z.slug != zone.slug %}
+        <li><a href="{{ ('/zones/' + z.slug + '/') | url }}">Plombier à {{ z.city }}</a></li>
+        {%- endif %}{% endfor %}
+      </ul>
+
+      <h2>Questions fréquentes à {{ zone.city }}</h2>
+      {% set faqName = "faq-zone" %}{% include "partials/faq.njk" %}
+    </article>
+
+    <aside aria-label="Informations complémentaires">
+      <div class="aside-card aside-card--nuit on-dark">
+        <h2>Un plombier près de chez vous</h2>
+        <p>{{ site.name }} · {{ site.address.city }} · {{ zone.distanceLabel }}.</p>
+        <a class="btn btn--primary btn--block" href="{{ site.phoneHref }}" data-track="call" data-track-where="zone-aside"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone }}</a>
+      </div>
+      <div class="aside-card">
+        <h2>Tous mes services</h2>
+        <ul>
+          {%- for s in services %}<li><a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name }}</a></li>{% endfor %}
+        </ul>
+      </div>
+      <div class="aside-card">
+        <h2>Conseils utiles</h2>
+        <ul>
+          {%- for a in collections.conseils %}<li><a href="{{ a.url | url }}">{{ a.data.title }}</a></li>{% endfor %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+{% set ctaTitle = "Vous êtes à " + zone.city + " ? Je suis votre plombier de proximité." %}
+{% include "partials/cta.njk" %}

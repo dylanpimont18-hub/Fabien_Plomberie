@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+title: "Contact et demande de devis gratuit"
+description: "Appelez Fabien Frémont au 06 46 39 61 06 ou demandez un devis gratuit en ligne en trois étapes. Artisan plombier à Vignoux-sur-Barangeon, 50 km autour de Vierzon."
+permalink: /contact/
+breadcrumb:
+  - name: "Contact"
+    url: "/contact/"
+---
+<div class="container page-head">
+  {% include "partials/breadcrumb.njk" %}
+  <p class="eyebrow">Contact</p>
+  <h1>Appelez-moi, ou décrivez votre besoin en trois étapes</h1>
+  <p class="lead">Pour une urgence, le téléphone reste le plus rapide. Pour un projet, le formulaire me permet de préparer mon passage.</p>
+</div>
+
+<section class="container section contact-layout" style="padding-top:0">
+  <div class="stack">
+    <div class="contact-box">
+      <dl>
+        <div>
+          <dt>Téléphone</dt>
+          <dd><a href="{{ site.phoneHref }}" data-track="call" data-track-where="contact">{{ site.phone }}</a></dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>{% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}<mark class="todo">{{ site.placeholders.email }}</mark>{% endif %}</dd>
+        </div>
+        <div>
+          <dt>Horaires</dt>
+          <dd>{% if site.hours %}{{ site.hours }}{% else %}<mark class="todo">{{ site.placeholders.hours }}</mark>{% endif %}</dd>
+        </div>
+        <div>
+          <dt>Basé à</dt>
+          <dd>{{ site.address.postalCode }} {{ site.address.city }}<br><span class="small muted">Intervention dans un rayon de {{ site.radiusKm }} km autour de {{ site.hub }}</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="whatsapp-box">
+      <h2 style="font-size:var(--fs-h4)">Envoyer une photo du problème</h2>
+      <p class="small muted">Une photo de la fuite ou de l'appareil m'aide à venir avec la bonne pièce.</p>
+      {%- if site.whatsappEnabled %}
+      <a class="btn btn--secondary" href="https://wa.me/{{ site.whatsappNumber }}?text={{ site.whatsappMessage | urlencode }}" rel="noopener" target="_blank" data-track="whatsapp">
+        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+        Envoyer par WhatsApp
+      </a>
+      {%- else %}
+      <a class="btn btn--secondary" href="https://wa.me/{{ site.whatsappNumber }}?text={{ site.whatsappMessage | urlencode }}" rel="noopener" target="_blank" data-track="whatsapp" aria-describedby="wa-note">
+        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+        Envoyer par WhatsApp
+      </a>
+      <p class="small" id="wa-note"><mark class="todo">[À activer si l'artisan accepte : le lien wa.me est prêt, il ouvre WhatsApp avec un message prérempli]</mark></p>
+      {%- endif %}
+    </div>
+
+    <div class="note">
+      <p class="small"><strong>Pas de boutique :</strong> je travaille chez mes clients. Mon adresse figure dans les <a href="{{ '/mentions-legales/' | url }}">mentions légales</a>.</p>
+    </div>
+  </div>
+
+  <div>
+    {% include "partials/form-devis.njk" %}
+  </div>
+</section>

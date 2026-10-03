@@ -143,7 +143,7 @@ Pas de thème sombre global : le site est un objet éditorial ivoire. Les sectio
 
 Pourquoi Fraunces : ses axes optiques permettent un hero à 300 avec `SOFT` ≈ 50 (empattements arrondis, chaleur) et des titres de carte plus fermes à 400 `SOFT` 0. Une seule famille, deux personnalités. Alternative acceptable si problème de licence ou de poids : **Newsreader** (Google Fonts, OFL) ou **Playfair Display** (plus classique, moins chaleureuse).
 
-Sous-ensemble latin + latin-ext (accents français) ; les deux fichiers variables pèsent ≈ 60 ko + 95 ko compressés. `size-adjust` et `ascent-override` définis sur les fallbacks pour limiter le CLS pendant le swap.
+Sous-ensemble latin (les accents français sont dans la plage U+0000-00FF) ; axes restreints à l'usage réel (Fraunces : `wght` 300–600, `opsz` 9–144, `SOFT` figé à 30 ; Inter : `wght` 400–700, `opsz` figé). Les deux fichiers woff2 pèsent ≈ 62 ko + 50 ko. `size-adjust` et `ascent-override` définis sur les fallbacks pour limiter le CLS pendant le swap.
 
 ### 4.2 Échelle fluide (clamp)
 Base : 16 px mobile → 18 px desktop pour le corps. Ratio ≈ 1,25 mobile, 1,333 desktop.

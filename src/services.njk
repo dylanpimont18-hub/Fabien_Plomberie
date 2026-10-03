@@ -1,0 +1,16 @@
+---
+layout: layouts/service.njk
+pagination:
+  data: services
+  size: 1
+  alias: service
+permalink: "/services/{{ service.slug }}/"
+eleventyComputed:
+  title: "{{ service.title }}"
+  description: "{{ service.metaDescription }}"
+  breadcrumb:
+    - name: "Services"
+      url: "/services/depannage-plomberie/"
+    - name: "{{ service.name }}"
+      url: "/services/{{ service.slug }}/"
+---

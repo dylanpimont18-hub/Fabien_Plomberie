@@ -1,0 +1,264 @@
+[
+  {
+    "slug": "depannage-plomberie",
+    "name": "Dépannage plomberie",
+    "short": "Fuites, débouchage, robinetterie",
+    "icon": "goutte",
+    "title": "Dépannage plomberie à Vierzon : fuite, débouchage",
+    "metaDescription": "Fuite, canalisation bouchée, robinet à changer ? Fabien Frémont, artisan plombier à Vignoux-sur-Barangeon, dépanne dans un rayon de 50 km autour de Vierzon.",
+    "h1": "Dépannage plomberie",
+    "lead": "Une fuite sous l'évier, une chasse d'eau qui coule, un siphon bouché : ce sont des pannes qui n'attendent pas. Je me déplace, je diagnostique, je répare proprement, et je vous explique ce que j'ai fait.",
+    "featured": true,
+    "featuredNote": "Intervention rapide",
+    "serviceType": "Dépannage plomberie",
+    "sections": [
+      {
+        "title": "Ce que je prends en charge",
+        "items": [
+          "Recherche et réparation de fuites : raccords, siphons, flexibles, canalisations apparentes, chasses d'eau.",
+          "Débouchage d'évier, de lavabo, de douche, de baignoire et de WC.",
+          "Remplacement de robinetterie : mitigeurs de cuisine et de salle de bain, robinets d'arrêt, flexibles.",
+          "Remplacement de mécanismes de chasse d'eau, de joints et de siphons.",
+          "Mise en sécurité d'une installation après un dégât des eaux, en attendant une réparation durable."
+        ]
+      },
+      {
+        "title": "Comment ça se passe",
+        "text": "Vous m'appelez au 06 46 39 61 06 et vous me décrivez le problème. Si vous pouvez, envoyez-moi une photo : cela m'aide à venir avec la bonne pièce. Sur place, je commence par chercher l'origine de la panne plutôt que de traiter le symptôme. Je vous annonce le prix avant de commencer la réparation, et je laisse l'endroit propre en partant."
+      },
+      {
+        "title": "En attendant mon arrivée",
+        "text": "Coupez l'arrivée d'eau générale (le robinet se trouve souvent près du compteur), placez un récipient sous la fuite et évitez les produits déboucheurs chimiques qui abîment les canalisations. Je détaille les bons réflexes dans mon article sur les fuites d'eau."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Intervenez-vous le jour même pour une fuite ?",
+        "a": "Je fais le maximum pour intervenir rapidement sur une fuite, en fonction de ma tournée et de la distance. Appelez-moi directement au 06 46 39 61 06 : je vous donne un créneau honnête. [À COMPLÉTER : délai d'intervention habituel et horaires d'astreinte, si l'artisan le souhaite]"
+      },
+      {
+        "q": "Le déplacement est-il facturé ?",
+        "a": "[À COMPLÉTER : conditions de déplacement et de devis pour un dépannage]. Dans tous les cas, le prix de l'intervention vous est annoncé avant que je commence."
+      },
+      {
+        "q": "Puis-je utiliser un déboucheur chimique en attendant ?",
+        "a": "Je le déconseille : ces produits attaquent les joints et les canalisations, et ils rendent l'intervention plus dangereuse pour celui qui démonte le siphon ensuite. Une ventouse ou un furet manuel est sans risque."
+      }
+    ],
+    "related": [
+      "chauffe-eau",
+      "plomberie-cuisine"
+    ],
+    "articles": [
+      "fuite-d-eau-les-bons-reflexes"
+    ]
+  },
+  {
+    "slug": "chauffe-eau",
+    "name": "Chauffe-eau et ballon d'eau chaude",
+    "short": "Remplacement, installation, dépannage",
+    "icon": "chauffe-eau",
+    "title": "Chauffe-eau et ballon d'eau chaude à Vierzon",
+    "metaDescription": "Plus d'eau chaude, ballon qui fuit ou en fin de vie ? Fabien Frémont remplace et installe votre chauffe-eau autour de Vierzon, Mehun-sur-Yèvre et Bourges.",
+    "h1": "Chauffe-eau et ballon d'eau chaude",
+    "lead": "Plus d'eau chaude un matin d'hiver, c'est l'une des pannes les plus courantes que je traite. Je diagnostique, je répare quand c'est raisonnable, et je vous conseille un remplacement adapté à votre foyer quand ça ne l'est plus.",
+    "serviceType": "Installation et remplacement de chauffe-eau",
+    "sections": [
+      {
+        "title": "Ce que je prends en charge",
+        "items": [
+          "Diagnostic d'une panne d'eau chaude : résistance, thermostat, groupe de sécurité, contacteur heures creuses.",
+          "Remplacement d'un chauffe-eau électrique (cumulus) à l'identique ou avec une capacité mieux adaptée.",
+          "Installation d'un ballon d'eau chaude neuf : fixation, raccordement hydraulique, groupe de sécurité, siphon, mise en service.",
+          "Remplacement du groupe de sécurité et du vase d'expansion.",
+          "Dépose et évacuation de l'ancien appareil."
+        ]
+      },
+      {
+        "title": "Choisir la bonne capacité",
+        "text": "Un ballon trop petit, c'est de l'eau froide en fin de douche ; trop grand, c'est de l'électricité gaspillée. Je regarde avec vous le nombre de personnes, vos habitudes et la place disponible avant de proposer un modèle. Je vous explique aussi les différences entre résistance blindée et stéatite, et l'intérêt d'un contacteur heures creuses."
+      },
+      {
+        "title": "Faut-il réparer ou remplacer ?",
+        "text": "Un chauffe-eau qui a plus d'une dizaine d'années, qui fuit par la cuve ou qui chauffe de moins en moins bien est généralement à remplacer. Un groupe de sécurité qui goutte ou un thermostat en panne se réparent. Mon article « Chauffe-eau : les signes qu'il faut le remplacer » vous aide à faire le tri avant de m'appeler."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Combien de temps dure le remplacement d'un chauffe-eau ?",
+        "a": "Pour un remplacement à l'identique, l'intervention se fait généralement dans la demi-journée, mise en service comprise. Si l'emplacement ou le raccordement doivent être modifiés, je vous l'indique sur le devis."
+      },
+      {
+        "q": "Reprenez-vous l'ancien chauffe-eau ?",
+        "a": "[À COMPLÉTER : conditions de dépose et d'évacuation de l'ancien appareil]."
+      },
+      {
+        "q": "Installez-vous des chauffe-eau thermodynamiques ?",
+        "a": "[À COMPLÉTER : types d'appareils installés (électrique, thermodynamique, gaz) et marques habituelles]."
+      }
+    ],
+    "related": [
+      "depannage-plomberie",
+      "chauffage-climatisation"
+    ],
+    "articles": [
+      "chauffe-eau-signes-remplacement"
+    ]
+  },
+  {
+    "slug": "renovation-salle-de-bain",
+    "name": "Rénovation de salle de bain",
+    "short": "Douche à l'italienne, receveur extra-plat",
+    "icon": "douche",
+    "title": "Rénovation de salle de bain près de Vierzon",
+    "metaDescription": "Baignoire remplacée par une douche, receveur extra-plat, douche à l'italienne : Fabien Frémont rénove votre salle de bain autour de Vierzon et Bourges.",
+    "h1": "Rénovation de salle de bain",
+    "lead": "Remplacer une baignoire par une douche de plain-pied, moderniser une salle de bain fatiguée ou l'adapter pour qu'elle reste pratique en vieillissant : je m'occupe de la plomberie de A à Z, avec un seul interlocuteur.",
+    "serviceType": "Rénovation de salle de bain",
+    "sections": [
+      {
+        "title": "Ce que je prends en charge",
+        "items": [
+          "Création d'une douche à l'italienne : évacuation encastrée, bonde ou caniveau, étanchéité, pente.",
+          "Pose d'un receveur extra-plat en remplacement d'une baignoire ou d'un ancien bac.",
+          "Remplacement de meuble-vasque, de lavabo, de WC, de colonne de douche et de robinetterie.",
+          "Modification des arrivées et évacuations d'eau pour un nouvel agencement.",
+          "Coordination avec le carreleur ou l'électricien si votre projet en demande un. [À COMPLÉTER : artisans partenaires éventuels]"
+        ]
+      },
+      {
+        "title": "Douche à l'italienne ou receveur extra-plat ?",
+        "text": "Les deux donnent une douche sans marche. La douche à l'italienne est carrelée au sol et demande une évacuation encastrée et une étanchéité soignée ; le receveur extra-plat se pose plus vite et limite les risques de fuite. Le bon choix dépend de la hauteur disponible sous le sol, de l'état de l'existant et de votre budget. J'explique tout cela dans mon article dédié, et je vous conseille sur place."
+      },
+      {
+        "title": "Ma façon de travailler",
+        "text": "Une salle de bain, c'est une pièce dont on se sert tous les jours : je planifie l'intervention pour limiter le temps sans douche, je protège les sols et les pièces traversées, et je nettoie en fin de journée. Vous savez à l'avance ce qui sera fait, et quand."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Combien de temps dure le remplacement d'une baignoire par une douche ?",
+        "a": "[À COMPLÉTER : durée type constatée par l'artisan]. Elle dépend surtout de l'état du mur et du sol derrière la baignoire et de la présence d'un carreleur."
+      },
+      {
+        "q": "Faites-vous aussi le carrelage et la faïence ?",
+        "a": "[À COMPLÉTER : prestations incluses ou confiées à un partenaire]."
+      },
+      {
+        "q": "Une douche à l'italienne est-elle possible dans une maison ancienne ?",
+        "a": "Souvent, mais pas toujours : il faut suffisamment d'épaisseur de sol pour encastrer l'évacuation avec la bonne pente. Quand ce n'est pas le cas, un receveur extra-plat donne un résultat très proche sans gros travaux."
+      }
+    ],
+    "related": [
+      "plomberie-cuisine",
+      "depannage-plomberie"
+    ],
+    "articles": [
+      "douche-italienne-ou-receveur-extra-plat"
+    ]
+  },
+  {
+    "slug": "chauffage-climatisation",
+    "name": "Chauffage et climatisation",
+    "short": "Confort été comme hiver",
+    "icon": "flamme",
+    "title": "Chauffage et climatisation à Vierzon (Cher)",
+    "metaDescription": "Radiateurs, circuit de chauffage, climatisation : Fabien Frémont, plombier chauffagiste à Vignoux-sur-Barangeon, intervient à 50 km autour de Vierzon.",
+    "h1": "Chauffage et climatisation",
+    "lead": "Un radiateur qui reste froid, un circuit à purger, un projet de climatisation pour les étés de plus en plus chauds : je vous accompagne pour que la maison reste confortable toute l'année.",
+    "serviceType": "Chauffage et climatisation",
+    "sections": [
+      {
+        "title": "Ce que je prends en charge",
+        "items": [
+          "Remplacement et pose de radiateurs à eau, de robinets thermostatiques et de têtes thermostatiques.",
+          "Purge, désembouage et équilibrage d'un circuit de chauffage.",
+          "Raccordement hydraulique et mise en eau d'un générateur de chauffage. [À COMPLÉTER : types de chaudières ou de pompes à chaleur pris en charge]",
+          "Climatisation : [À COMPLÉTER : pose, entretien, marques, attestation de capacité fluides frigorigènes].",
+          "Diagnostic d'un chauffage qui ne monte pas en température."
+        ]
+      },
+      {
+        "title": "Avant l'hiver",
+        "text": "Un circuit de chauffage s'entretient : purger les radiateurs, vérifier la pression, contrôler le vase d'expansion. Ce sont des gestes simples qui évitent une panne au premier froid. Je peux les faire lors d'un passage, et vous montrer comment purger vous-même un radiateur."
+      },
+      {
+        "title": "Climatisation : ce qu'il faut savoir",
+        "text": "La manipulation des fluides frigorigènes est réglementée : elle demande une attestation de capacité. [À COMPLÉTER : préciser si l'artisan la détient ou s'il s'associe à un frigoriste pour la mise en service]. Je vous le dis clairement dès le premier échange, pour que vous sachiez qui fait quoi."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Entretenez-vous les chaudières ?",
+        "a": "[À COMPLÉTER : entretien annuel de chaudière proposé ou non, types d'énergie]."
+      },
+      {
+        "q": "Un radiateur reste froid en haut, que faire ?",
+        "a": "C'est généralement de l'air dans le circuit : une purge suffit souvent. Si plusieurs radiateurs sont concernés ou si le problème revient vite, il peut s'agir de boues dans le circuit ou d'un défaut de pression : je viens diagnostiquer."
+      },
+      {
+        "q": "Installez-vous des climatisations réversibles ?",
+        "a": "[À COMPLÉTER : réponse de l'artisan selon ses habilitations]."
+      }
+    ],
+    "related": [
+      "chauffe-eau",
+      "depannage-plomberie"
+    ],
+    "articles": [
+      "chauffe-eau-signes-remplacement"
+    ]
+  },
+  {
+    "slug": "plomberie-cuisine",
+    "name": "Plomberie de cuisine",
+    "short": "Évier, lave-vaisselle, lave-linge",
+    "icon": "evier",
+    "title": "Plomberie de cuisine à Vierzon et alentours",
+    "metaDescription": "Pose d'évier, raccordement de lave-vaisselle ou de lave-linge, mitigeur : Fabien Frémont, artisan plombier, intervient autour de Vierzon et Bourges.",
+    "h1": "Plomberie de cuisine",
+    "lead": "Une nouvelle cuisine, un lave-vaisselle à raccorder, un évier qui fuit : la plomberie de cuisine, c'est souvent des petits travaux qui demandent de la précision. C'est d'ailleurs sur un raccordement de lave-vaisselle que j'ai reçu mon premier avis cinq étoiles.",
+    "serviceType": "Plomberie de cuisine",
+    "sections": [
+      {
+        "title": "Ce que je prends en charge",
+        "items": [
+          "Raccordement de lave-vaisselle et de lave-linge : arrivée d'eau, robinet dédié, évacuation avec siphon anti-retour.",
+          "Pose et remplacement d'évier, de bonde, de siphon et de mitigeur de cuisine.",
+          "Déplacement des arrivées et évacuations pour une nouvelle implantation de cuisine.",
+          "Installation d'un robinet d'arrêt ou d'un filtre sous évier.",
+          "Réparation d'une fuite sous évier ou sur un flexible."
+        ]
+      },
+      {
+        "title": "Avec votre cuisiniste",
+        "text": "Si vous faites poser une cuisine, je peux intervenir avant la pose pour préparer les arrivées et les évacuations aux bons endroits, puis après pour les raccordements finaux. Un plan de la cuisine suffit pour que je prépare mon passage."
+      },
+      {
+        "title": "Un raccordement bien fait, c'est quoi ?",
+        "text": "Un robinet d'arrêt accessible pour couper l'eau sans démonter la cuisine, un siphon avec prise machine pour éviter les remontées d'odeurs, des flexibles aux normes et un contrôle d'étanchéité à la fin. Ce sont des détails qu'on ne voit pas, mais qui évitent les dégâts des eaux."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Pouvez-vous raccorder un lave-vaisselle s'il n'y a pas d'arrivée prévue ?",
+        "a": "Oui : je crée une arrivée d'eau avec un robinet dédié et une évacuation raccordée au siphon de l'évier, quand la configuration le permet."
+      },
+      {
+        "q": "Fournissez-vous l'évier et le mitigeur ?",
+        "a": "[À COMPLÉTER : fourniture possible ou pose du matériel acheté par le client, marques habituelles]."
+      },
+      {
+        "q": "Intervenez-vous pour une simple fuite de flexible ?",
+        "a": "Oui, c'est un dépannage courant. Coupez le robinet d'arrêt sous l'évier en attendant, et appelez-moi."
+      }
+    ],
+    "related": [
+      "renovation-salle-de-bain",
+      "depannage-plomberie"
+    ],
+    "articles": [
+      "fuite-d-eau-les-bons-reflexes"
+    ]
+  }
+]

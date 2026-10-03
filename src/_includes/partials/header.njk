@@ -1,0 +1,85 @@
+<header class="header {{ 'header--transparent' if transparentHeader }}" id="header">
+  <div class="container header__inner">
+    <a class="logo" href="{{ '/' | url }}" aria-label="{{ site.name }}, retour à l'accueil">
+      {% set logoId = "logo-header" %}{% include "partials/logo.njk" %}
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="nav__list">
+        {%- for item in nav.main %}
+        <li class="nav__item">
+          {%- if item.children %}
+          <button class="nav__link" type="button" aria-expanded="false" aria-controls="sub-{{ item.children }}" data-submenu>
+            {{ item.label }}
+            <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+          </button>
+          <ul class="nav__sub" id="sub-{{ item.children }}">
+            {%- if item.children == "services" %}
+              {%- for s in services %}
+              <li><a href="{{ ('/services/' + s.slug + '/') | url }}" {% if page.url == '/services/' + s.slug + '/' %}aria-current="page"{% endif %}>{{ s.name }}</a></li>
+              {%- endfor %}
+            {%- else %}
+              {%- for z in zones %}
+              <li><a href="{{ ('/zones/' + z.slug + '/') | url }}" {% if page.url == '/zones/' + z.slug + '/' %}aria-current="page"{% endif %}>{{ z.city }}</a></li>
+              {%- endfor %}
+            {%- endif %}
+          </ul>
+          {%- else %}
+          <a class="nav__link" href="{{ item.url | url }}" {% if page.url == item.url or (item.url != '/' and page.url.startsWith(item.url)) %}aria-current="page"{% endif %}>{{ item.label }}</a>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <a class="btn btn--primary btn--sm header__phone" href="{{ site.phoneHref }}" data-track="call" data-track-where="header">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span class="nowrap">{{ site.phone }}</span>
+      </a>
+      <a class="header__phone-icon" href="{{ site.phoneHref }}" data-track="call" data-track-where="header-mobile" aria-label="Appeler le {{ site.phone }}">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        Menu
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu on-dark" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__top">
+    <a class="logo" href="{{ '/' | url }}" aria-label="{{ site.name }}, retour à l'accueil">
+      {% set logoId = "logo-menu" %}{% include "partials/logo.njk" %}
+    </a>
+    <button class="menu__close" type="button" data-menu-close>
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      Fermer
+    </button>
+  </div>
+  <nav aria-label="Navigation mobile">
+    <ul class="menu__list">
+      {%- for item in nav.main %}
+      <li>
+        <a href="{{ item.url | url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>{{ item.label }}</a>
+        {%- if item.children == "services" %}
+        <ul class="menu__sub">
+          {%- for s in services %}<li><a href="{{ ('/services/' + s.slug + '/') | url }}">{{ s.name }}</a></li>{% endfor %}
+        </ul>
+        {%- elif item.children == "zones" %}
+        <ul class="menu__sub">
+          {%- for z in zones %}<li><a href="{{ ('/zones/' + z.slug + '/') | url }}">Plombier à {{ z.city }}</a></li>{% endfor %}
+        </ul>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  <div class="menu__footer">
+    <a class="btn btn--primary btn--block" href="{{ site.phoneHref }}" data-track="call" data-track-where="menu">
+      <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+      {{ site.phone }}
+    </a>
+    <a class="btn btn--secondary btn--block" href="{{ '/contact/' | url }}#devis">Demander un devis</a>
+    <p class="small">{{ site.name }} · {{ site.address.city }} · Rayon de {{ site.radiusKm }} km autour de {{ site.hub }}</p>
+  </div>
+</div>

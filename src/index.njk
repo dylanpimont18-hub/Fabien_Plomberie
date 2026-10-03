@@ -1,0 +1,214 @@
+---
+layout: layouts/base.njk
+title: "Plombier à Vierzon et dans le Cher"
+description: "Fabien Frémont, artisan plombier à Vignoux-sur-Barangeon : dépannage, chauffe-eau, salle de bain, chauffage, cuisine à 50 km autour de Vierzon. Devis gratuit."
+transparentHeader: true
+bodyClass: "home"
+---
+{%- set faqItems = faq -%}
+
+{#- 2. HERO -#}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__visual" aria-hidden="true">
+    <div class="ph trame"><span class="ph__label">Photo chantier à fournir · visuel principal</span></div>
+  </div>
+  <div class="container hero__content">
+    <p class="eyebrow reveal">Artisan plombier · Vignoux-sur-Barangeon</p>
+    <h1 id="hero-title" class="reveal-lines">
+      <span class="line"><span style="--i:0">Plombier à Vierzon</span></span>
+      <span class="line"><span style="--i:1">et dans le Cher</span></span>
+    </h1>
+    <p class="lead reveal" style="--i:2">Le travail soigné d'un artisan local qui prend le temps de bien faire, du premier appel au dernier coup d'éponge.</p>
+    <div class="hero__actions reveal" style="--i:3">
+      <a class="btn btn--primary" href="{{ site.phoneHref }}" data-track="call" data-track-where="hero">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        Appeler
+      </a>
+      <a class="btn btn--secondary" href="{{ '/contact/' | url }}#devis">Demander un devis</a>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#services" aria-label="Découvrir les services">Découvrir</a>
+</section>
+
+{#- 3. RÉASSURANCE -#}
+<section class="section--tight" aria-label="Pourquoi me faire confiance">
+  <div class="container">
+    <ul class="reassurance" style="list-style:none;padding:0;margin:0">
+      {%- for r in nav.reassurance %}
+      <li class="badge {{ 'badge--todo' if r.todo }} reveal" style="--i:{{ loop.index0 }}">
+        <svg class="icon" aria-hidden="true"><use href="#i-{{ r.icon }}"/></svg>
+        <span><span class="badge__label">{{ r.label }}</span><span class="badge__sub">{{ r.sub }}</span></span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{#- 4. SERVICES BENTO -#}
+<section class="section" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Mes services</p>
+      <h2 id="services-title">De la fuite du dimanche soir à la salle de bain dont vous rêvez</h2>
+      <p class="muted">Cinq métiers, un seul artisan. Chaque intervention commence par une explication claire et finit par un chantier propre.</p>
+    </div>
+    <div class="bento">
+      {%- for s in services %}
+        {% set featured = s.featured %}{% set index = loop.index0 %}{% include "partials/card-service.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{#- 5. MANIFESTE -#}
+<section class="section section--nuit manifesto" aria-labelledby="manifeste-title">
+  <div class="container manifesto__grid">
+    <p class="eyebrow manifesto__eyebrow reveal">Ma façon de travailler</p>
+    <h2 id="manifeste-title" class="visually-hidden">Mes valeurs</h2>
+    <blockquote class="reveal-lines">
+      <p>
+        <span class="line"><span style="--i:0"><span class="q">«</span> Je ne suis pas là pour vendre</span></span>
+        <span class="line"><span style="--i:1">des travaux. Je suis là pour que</span></span>
+        <span class="line"><span style="--i:2">chez vous, l'eau coule bien,</span></span>
+        <span class="line"><span style="--i:3">longtemps, et sans surprise. <span class="q">»</span></span></span>
+      </p>
+    </blockquote>
+    <cite class="reveal" style="--i:4">Fabien Frémont, plombier</cite>
+    <ul class="manifesto__values reveal" style="--i:5" aria-label="Mes valeurs">
+      {%- for v in site.values %}<li>{{ v | capitalize }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{#- 6. MÉTHODE -#}
+<section class="section" aria-labelledby="methode-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Comment ça se passe</p>
+      <h2 id="methode-title">Quatre étapes, aucune zone d'ombre</h2>
+    </div>
+    <ol class="steps" data-steps>
+      {%- for st in nav.steps %}
+      <li class="steps__item reveal" style="--i:{{ loop.index0 + 2 }}">
+        <span class="steps__num" aria-hidden="true">{{ loop.index }}</span>
+        <div>
+          <h3><span class="visually-hidden">Étape {{ loop.index }} : </span>{{ st.title }}</h3>
+          <p>{{ st.text }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+
+{#- 7. RÉALISATIONS AVANT/APRÈS -#}
+<section class="section section--ivoire-2" aria-labelledby="realisations-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Réalisations</p>
+      <h2 id="realisations-title">Avant, après : le soin se voit dans les détails</h2>
+      <p class="muted">Faites glisser le curseur pour comparer. Les photos de chantiers réels de Fabien remplaceront ces emplacements.</p>
+    </div>
+    <div class="ba-carousel reveal" data-carousel>
+      <div class="ba-carousel__track" data-track-el>
+        {%- set realisations = [
+          { t: "Remplacement de baignoire par une douche", w: "Salle de bain" },
+          { t: "Remplacement d'un chauffe-eau", w: "Chauffe-eau" },
+          { t: "Raccordement d'une cuisine neuve", w: "Cuisine" }
+        ] -%}
+        {%- for r in realisations %}
+        <figure class="ba-carousel__slide">
+          <div class="ba" data-ba>
+            <div class="ba__img ba__img--avant"><div class="ph ph--avant" role="img" aria-label="Photo avant à fournir"><span class="ph__label">Avant · photo à fournir</span></div></div>
+            <div class="ba__img ba__img--apres"><div class="ph" role="img" aria-label="Photo après à fournir"><span class="ph__label">Après · photo à fournir</span></div></div>
+            <span class="ba__tag ba__tag--avant" aria-hidden="true">Avant</span>
+            <span class="ba__tag ba__tag--apres" aria-hidden="true">Après</span>
+            <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparer avant et après : {{ r.t }}" aria-valuetext="Avant 50 %, après 50 %">
+            <div class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon"><use href="#i-arrow-left"/></svg><svg class="icon" style="margin-left:-6px"><use href="#i-arrow"/></svg></span></div>
+          </div>
+          <figcaption><span>{{ r.t }}</span><span>{{ r.w }} · <mark class="todo">[À COMPLÉTER : lieu, date]</mark></span></figcaption>
+        </figure>
+        {%- endfor %}
+      </div>
+      <div class="ba-carousel__nav">
+        <button type="button" data-carousel-prev aria-label="Réalisation précédente"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+        <button type="button" data-carousel-next aria-label="Réalisation suivante"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <output aria-live="polite" data-carousel-status>1 / {{ realisations.length }}</output>
+      </div>
+    </div>
+  </div>
+</section>
+
+{#- 8. PORTRAIT -#}
+<section class="section" aria-labelledby="portrait-title">
+  <div class="container portrait">
+    <div class="portrait__visual reveal">
+      <div class="ph ph--4-5" role="img" aria-label="Portrait de Fabien Frémont à fournir"><span class="ph__label">Portrait à fournir</span></div>
+      <div class="portrait__caption"><strong>Fabien Frémont</strong>Artisan plombier depuis 2024, plombier depuis bien plus longtemps</div>
+    </div>
+    <div class="portrait__text reveal" style="--i:1">
+      <p class="eyebrow">Qui est derrière le camion</p>
+      <h2 id="portrait-title">Je m'appelle Fabien, et je préfère bien faire que faire vite</h2>
+      <p>Pendant sept ans, j'ai été plombier salarié. Sept ans à apprendre le métier sur toutes sortes de chantiers, à voir ce qui tient dans le temps et ce qui ne tient pas, et à me dire que je ferais certaines choses autrement si c'était mon nom sur la facture.</p>
+      <p>En juillet 2024, j'ai créé Frémont Plomberie Services à Vignoux-sur-Barangeon. Pas une grosse structure : moi, mon camion, mon outillage, et un rayon d'une cinquantaine de kilomètres autour de Vierzon. Vous m'appelez, c'est moi qui réponds. Je viens, c'est moi qui interviens.</p>
+      <p>Ce que j'aime dans ce métier, c'est le soulagement sur le visage des gens quand l'eau chaude revient, et la fierté d'un raccordement propre, bien aligné, qu'on ne reverra plus pendant vingt ans.</p>
+      <a class="btn btn--link" href="{{ '/a-propos/' | url }}">Mon parcours en détail <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+{#- 9. AVIS -#}
+<section class="section section--ivoire-2" aria-labelledby="avis-title">
+  <div class="container">
+    <div class="review reveal">
+      <p class="eyebrow" style="justify-content:center">Ils m'ont fait confiance</p>
+      <h2 id="avis-title" class="visually-hidden">Avis clients</h2>
+      <div class="review__stars" role="img" aria-label="Note : {{ site.review.rating }} sur 5">
+        {%- for i in range(0, 5) %}<svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>{% endfor %}
+      </div>
+      <blockquote>
+        <p>{{ site.review.paraphrase }}</p>
+      </blockquote>
+      <p class="review__meta">{{ site.review.service }} · {{ site.review.dateLabel }} · {{ site.review.source }}, {{ site.review.rating }}/5</p>
+      <div class="review__actions">
+        {%- if site.googleReviewUrl %}
+        <a class="btn btn--secondary" href="{{ site.googleReviewUrl }}" rel="noopener" target="_blank" data-track="review">Laisser un avis Google</a>
+        {%- else %}
+        <a class="btn btn--secondary" href="#" aria-disabled="true" data-track="review" title="Lien à compléter">Laisser un avis Google</a>
+        <p class="small" style="width:100%"><mark class="todo">{{ site.placeholders.reviewLink }}</mark></p>
+        {%- endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{#- 10. CARTE -#}
+<section class="section" aria-labelledby="zone-title">
+  <div class="container grid grid--12" style="align-items:center">
+    <div class="reveal" style="grid-column: span 5">
+      <p class="eyebrow">Zone d'intervention</p>
+      <h2 id="zone-title">Autour de Vierzon, jusqu'à Bourges</h2>
+      <p class="muted" style="margin-top:var(--sp-4)">Je suis basé à Vignoux-sur-Barangeon et j'interviens dans un rayon d'environ 50 km : vallée de l'Yèvre, Sologne du Cher, agglomération de Bourges. Cliquez sur une commune pour découvrir comment j'y travaille.</p>
+    </div>
+    <div class="reveal" style="grid-column: span 7; --i:1">
+      {% include "partials/map.njk" %}
+    </div>
+  </div>
+</section>
+
+{#- 11. FAQ -#}
+<section class="section section--ivoire-2" aria-labelledby="faq-title">
+  <div class="container grid grid--12">
+    <div class="reveal" style="grid-column: span 4">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2 id="faq-title">Ce qu'on me demande souvent</h2>
+      <p class="muted" style="margin-top:var(--sp-4)">Une autre question ? <a href="{{ site.phoneHref }}" data-track="call" data-track-where="faq">Appelez-moi</a>, c'est plus simple.</p>
+    </div>
+    <div class="reveal" style="grid-column: span 8; --i:1">
+      {% set faqName = "faq-accueil" %}{% include "partials/faq.njk" %}
+    </div>
+  </div>
+</section>
+
+{#- 12. CTA -#}
+{% include "partials/cta.njk" %}

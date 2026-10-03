@@ -1,0 +1,16 @@
+<section class="cta section on-dark" aria-labelledby="cta-title">
+  <div class="container cta__inner">
+    <div class="reveal">
+      <p class="eyebrow">Parlons de votre projet</p>
+      <h2 id="cta-title">{{ ctaTitle or "Une fuite, un projet, une question ? Appelez-moi, je vous réponds personnellement." }}</h2>
+      <p>{{ ctaText or "Devis gratuit et détaillé. Un seul interlocuteur, du premier appel à la fin du chantier." }}</p>
+    </div>
+    <div class="cta__actions reveal" style="--i:1">
+      <a class="btn btn--primary" href="{{ site.phoneHref }}" data-track="call" data-track-where="cta">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        {{ site.phone }}
+      </a>
+      <a class="btn btn--secondary" href="{{ '/contact/' | url }}#devis">Demander un devis</a>
+    </div>
+  </div>
+</section>
