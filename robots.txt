@@ -1,0 +1,4 @@
+
+# Mode maquette (SITE_MODE=demo) : indexation interdite
+User-agent: *
+Disallow: /
