@@ -40,11 +40,29 @@ jobs:
         env:
           # demo par défaut ; passer en prod via "Run workflow" ou la variable de dépôt SITE_MODE
           SITE_MODE: ${{ github.event.inputs.site_mode || vars.SITE_MODE || 'demo' }}
-          # Sans domaine personnalisé : https://<utilisateur>.github.io/<depot>/
-          # Avec un domaine : définir les variables de dépôt SITE_URL (https://www.exemple.fr) et PATH_PREFIX (/)
-          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
-          PATH_PREFIX: ${{ vars.PATH_PREFIX || format('/{0}/', github.event.repository.name) }}
-        run: npm run build
+          REPO_NAME: ${{ github.event.repository.name }}
+          OWNER: ${{ github.repository_owner }}
+          VAR_SITE_URL: ${{ vars.SITE_URL }}
+          VAR_PATH_PREFIX: ${{ vars.PATH_PREFIX }}
+        run: |
+          # Adresse publique du site :
+          # - domaine personnalisé : variables de dépôt SITE_URL (https://www.exemple.fr) et PATH_PREFIX (/)
+          # - dépôt nommé <compte>.github.io : https://<compte>.github.io/ (site à la racine)
+          # - autre dépôt : https://<compte>.github.io/<depot>/
+          owner_lc=$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')
+          repo_lc=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
+          if [ -n "$VAR_SITE_URL" ]; then
+            export SITE_URL="$VAR_SITE_URL"
+            export PATH_PREFIX="${VAR_PATH_PREFIX:-/}"
+          elif [ "$repo_lc" = "$owner_lc.github.io" ]; then
+            export SITE_URL="https://$repo_lc"
+            export PATH_PREFIX="/"
+          else
+            export SITE_URL="https://$owner_lc.github.io/$REPO_NAME"
+            export PATH_PREFIX="/$REPO_NAME/"
+          fi
+          echo "Construction pour $SITE_URL (préfixe $PATH_PREFIX, mode $SITE_MODE)"
+          npm run build
 
       - name: Publier sur la branche gh-pages
         uses: peaceiris/actions-gh-pages@v4

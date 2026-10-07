@@ -57,7 +57,7 @@ Sert `_site/` localement et audite cinq pages types en mobile (performance, acce
 Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) construit le site et publie `_site/` sur la branche `gh-pages` à chaque push sur `main`, `master` ou `claude/site-fremont-plomberie`, et à la demande via « Run workflow ».
 
 1. Dans le dépôt GitHub : **Settings → Pages → Build and deployment → Source : Deploy from a branch → `gh-pages` / `(root)`**. GitHub l'active en général tout seul au premier push de `gh-pages` sur un dépôt public.
-2. Le site est servi sur `https://<utilisateur>.github.io/<depot>/`. Le workflow calcule `SITE_URL` et `PATH_PREFIX` à partir du nom du dépôt.
+2. Le site est servi sur `https://<compte>.github.io/<depot>/`, ou sur `https://<compte>.github.io/` si le dépôt s'appelle `<compte>.github.io`. Le workflow calcule `SITE_URL` et `PATH_PREFIX` à partir du nom du compte et du dépôt.
 3. Pour un domaine personnalisé, définir trois variables de dépôt (**Settings → Secrets and variables → Actions → Variables**) : `CUSTOM_DOMAIN` (`www.exemple.fr`), `SITE_URL` (`https://www.exemple.fr`) et `PATH_PREFIX` (`/`). Chez le registrar, ajouter un `CNAME` `www` vers `<utilisateur>.github.io`, puis cocher **Enforce HTTPS** dans Settings → Pages.
 
 ## Passer de la démo à la production
